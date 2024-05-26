@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Imperial</h2>
+    <form id="imperial-form" method="POST">
+        {{ imperial_form.hidden_tag() }}
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-info">
+                    <th>Force/Fortification</th>
+                    <th>Ritual</th>
+                    <th>Order/Is Besieged</th>
+                    <th>Strength</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="imperial-forces">
+                <tr id="imperial-row-0" class="table-dark">
+                    <td>{{ imperial_form.force(id='imperial-force-0', class='form-control') }}</td>
+                    <td>{{ imperial_form.ritual(id='imperial-ritual-0', class='form-control') }}</td>
+                    <td>{{ imperial_form.order(id='imperial-order-0', class='form-control') }}</td>
+                    <td>{{ imperial_form.strength(id='imperial-strength-0', readonly='readonly', class='form-control')
+                        }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-imperial" class="btn btn-primary mb-3">Add an Imperial Force</button>
+        <button id="add-imperial-fortification" class="btn btn-primary mb-3">Add an Imperial Fortification</button>
+    </form>
+
+    <h2>Barbarian</h2>
+    <form id="barbarian-form" method="POST">
+        {{ barbarian_form.hidden_tag() }}
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-info">
+                    <th>Force/Fortification</th>
+                    <th>Ritual</th>
+                    <th>Order/Is Besieged</th>
+                    <th>Strength</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="barbarian-forces">
+                <tr id="barbarian-row-0" class="table-dark">
+                    <td>{{ barbarian_form.force(id='barbarian-force-0', class='form-control') }}</td>
+                    <td>{{ barbarian_form.ritual(id='barbarian-ritual-0', class='form-control') }}</td>
+                    <td>{{ barbarian_form.order(id='barbarian-order-0', class='form-control') }}</td>
+                    <td>{{ barbarian_form.strength(id='barbarian-strength-0', readonly='readonly', class='form-control')
+                        }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-barbarian" class="btn btn-primary mb-3">Add Barbarian Force</button>
+        <button id="add-barbarian-fortification" class="btn btn-primary mb-3">Add a Barbarian Fortification</button>
+    </form>
+    <form id="calculate-form" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" id="calculate-outcome" class="btn btn-success mb-3">Calculate Outcome</button>
+    </form>
+</div>
+
+<div id="summary-container">
+    <h2>Outcome:</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-info">
+                <th>Force</th>
+                <th>Victory Contribution</th>
+                <th>Casualties Inflicted</th>
+                <th>Victory Points</th>
+                <th>Offensive Victory Points</th>
+                <th>Defensive Victory Points</th>
+            </tr>
+        </thead>
+        <tbody id="summary">
+            <tr id="summary-row-imperial" class="table-dark">
+                <td id="summary-force-imperial"></td>
+                <td id="summary-victory-contribution-imperial"></td>
+                <td id="summary-casualties-inflicted-imperial"></td>
+                <td id="summary-victory-points-imperial"></td>
+                <td id="summary-offensive-victory-points-imperial"></td>
+                <td id="summary-defensive-victory-points-imperial"></td>
+            </tr>
+            <tr id="summary-row-barbarian" class="table-dark">
+                <td id="summary-force-barbarian"></td>
+                <td id="summary-victory-contribution-barbarian"></td>
+                <td id="summary-casualties-inflicted-barbarian"></td>
+                <td id="summary-victory-points-barbarian"></td>
+                <td id="summary-offensive-victory-points-barbarian"></td>
+                <td id="summary-defensive-victory-points-barbarian"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="details">
+    <h4>Imperial Forces</h4>
+    <div id="imperial-forces-details"></div>
+    <h4>Imperial Fortifications</h4>
+    <div id="imperial-fortifications-details"></div>
+    <h4>Barbarian Forces</h4>
+    <div id="barbarian-forces-details"></div>
+    <h4>Barbarian Fortifications</h4>
+    <div id="barbarian-fortifications-details"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/army_details.js') }}"></script>
+<script src="{{ url_for('static', filename='js/fortification_details.js') }}"></script>
+<script src="{{ url_for('static', filename='js/calculations.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,77 @@
+[
+    {
+        "nation_id": 0,
+        "nation_name": "",
+        "nation_faction": ""
+    },
+    {
+        "nation_id": 1,
+        "nation_name": "Dawn",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 2,
+        "nation_name": "Highguard",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 3,
+        "nation_name": "Imperial Orcs",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 4,
+        "nation_name": "Navarr",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 5,
+        "nation_name": "The Brass Coast",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 6,
+        "nation_name": "The League",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 7,
+        "nation_name": "The Marches",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 8,
+        "nation_name": "Urizen",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 9,
+        "nation_name": "Varushka",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 10,
+        "nation_name": "Wintermark",
+        "nation_faction": "The Empire"
+    },
+    {
+        "nation_id": 11,
+        "nation_name": "The Drujj",
+        "nation_faction": "Barbarian"
+    },
+    {
+        "nation_id": 12,
+        "nation_name": "The Grendel",
+        "nation_faction": "Barbarian"
+    },
+    {
+        "nation_id": 13,
+        "nation_name": "The Jotun",
+        "nation_faction": "Barbarian"
+    },
+    {
+        "nation_id": 14,
+        "nation_name": "The Thule",
+        "nation_faction": "Barbarian"
+    }
+]

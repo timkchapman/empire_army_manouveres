@@ -1,0 +1,290 @@
+[
+    {
+        "force_id": 0,
+        "force_name": "",
+        "force_is_army": true,
+        "nation_id": "",
+        "quality_id": "",
+        "large": false
+    },
+    {
+        "force_id": 1,
+        "force_name": "Black Cloaks",
+        "force_is_army": true,
+        "nation_id": 4,
+        "quality_id": 9,
+        "large": false
+    },
+    {
+        "force_id": 2,
+        "force_name": "Bloodcloaks",
+        "force_is_army": true,
+        "nation_id": 10,
+        "quality_id": 22,
+        "large": false
+    },
+    {
+        "force_id": 3,
+        "force_name": "Bounders",
+        "force_is_army": true,
+        "nation_id": 7,
+        "quality_id": 32,
+        "large": false
+    },
+    {
+        "force_id": 4,
+        "force_name": "Burning Falcon",
+        "force_is_army": true,
+        "nation_id": 5,
+        "quality_id": 13,
+        "large": false
+    },
+    {
+        "force_id": 5,
+        "force_name": "Citadel Guard",
+        "force_is_army": true,
+        "nation_id": 8,
+        "quality_id": 18,
+        "large": false
+    },
+    {
+        "force_id": 6,
+        "force_name": "Drakes",
+        "force_is_army": true,
+        "nation_id": 7,
+        "quality_id": 25,
+        "large": true
+    },
+    {
+        "force_id": 7,
+        "force_name": "Eastern Sky",
+        "force_is_army": true,
+        "nation_id": 1,
+        "quality_id": 10,
+        "large": false
+    },
+    {
+        "force_id": 8,
+        "force_name": "Fire of the South",
+        "force_is_army": true,
+        "nation_id": 5,
+        "quality_id": 9,
+        "large": false
+    },
+    {
+        "force_id": 9,
+        "force_name": "Fist of the Mountains",
+        "force_is_army": true,
+        "nation_id": 10,
+        "quality_id": 8,
+        "large": false
+    },
+    {
+        "force_id": 10,
+        "force_name": "Golden Axe",
+        "force_is_army": true,
+        "nation_id": 9,
+        "quality_id": 6,
+        "large": false
+    },
+    {
+        "force_id": 11,
+        "force_name": "Golden Sun",
+        "force_is_army": true,
+        "nation_id": 1,
+        "quality_id": 24,
+        "large": false
+    },
+    {
+        "force_id": 12,
+        "force_name": "Granite Pillar",
+        "force_is_army": true,
+        "nation_id": 2,
+        "quality_id": 5,
+        "large": false
+    },
+    {
+        "force_id": 13,
+        "force_name": "Green Shield",
+        "force_is_army": true,
+        "nation_id": 10,
+        "quality_id": 16,
+        "large": false
+    },
+    {
+        "force_id": 14,
+        "force_name": "Gryphon's Pride",
+        "force_is_army": true,
+        "nation_id": 1,
+        "quality_id": 1,
+        "large": false
+    },
+    {
+        "force_id": 15,
+        "force_name": "Iron Helms",
+        "force_is_army": true,
+        "nation_id": 9,
+        "quality_id": 2,
+        "large": false
+    },
+    {
+        "force_id": 16,
+        "force_name": "Isaella's Dance",
+        "force_is_army": true,
+        "nation_id": 4,
+        "quality_id": 30,
+        "large": false
+    },
+    {
+        "force_id": 17,
+        "force_name": "Northern Eagle",
+        "force_is_army": true,
+        "nation_id": 9,
+        "quality_id": 14,
+        "large": false
+    },
+    {
+        "force_id": 18,
+        "force_name": "Quiet Step",
+        "force_is_army": true,
+        "nation_id": 4,
+        "quality_id": 3,
+        "large": false
+    },
+    {
+        "force_id": 19,
+        "force_name": "Red Wind Corsairs",
+        "force_is_army": true,
+        "nation_id": 5,
+        "quality_id": 4,
+        "large": false
+    },
+    {
+        "force_id": 20,
+        "force_name": "Seventh Wave",
+        "force_is_army": true,
+        "nation_id": 2,
+        "quality_id": 27,
+        "large": false
+    },
+    {
+        "force_id": 21,
+        "force_name": "Strong Reeds",
+        "force_is_army": true,
+        "nation_id": 7,
+        "quality_id": 26,
+        "large": false
+    },
+    {
+        "force_id": 22,
+        "force_name": "Summer Storm",
+        "force_is_army": true,
+        "nation_id": 3,
+        "quality_id": 23,
+        "large": false
+    },
+    {
+        "force_id": 23,
+        "force_name": "Towerjacks",
+        "force_is_army": true,
+        "nation_id": 6,
+        "quality_id": 7,
+        "large": false
+    },
+    {
+        "force_id": 24,
+        "force_name": "Tusks",
+        "force_is_army": true,
+        "nation_id": 7,
+        "quality_id": 5,
+        "large": false
+    },
+    {
+        "force_id": 25,
+        "force_name": "Valiant Pegasus",
+        "force_is_army": true,
+        "nation_id": 2,
+        "quality_id": 22,
+        "large": false
+    },
+    {
+        "force_id": 26,
+        "force_name": "Winter Sun",
+        "force_is_army": true,
+        "nation_id": 3,
+        "quality_id": 12,
+        "large": false
+    },
+    {
+        "force_id": 27,
+        "force_name": "Wolves of War",
+        "force_is_army": true,
+        "nation_id": 6,
+        "quality_id": 21,
+        "large": false
+    },
+    {
+        "force_id": 28,
+        "force_name": "Jotun Army",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 29,
+        "force_name": "Large Jotun Army",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 30,
+        "force_name": "Drujj Army",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 31,
+        "force_name": "Large Drujj Army",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 32,
+        "force_name": "Grendel Army",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 33,
+        "force_name": "Large Grendel Army",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 34,
+        "force_name": "Grendel Fleet",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 35,
+        "force_name": "Large Grendel Fleet",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    }
+]
