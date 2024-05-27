@@ -50,7 +50,9 @@
                     <td>{{ barbarian_form.order(id='barbarian-order-0', class='form-control') }}</td>
                     <td>{{ barbarian_form.strength(id='barbarian-strength-0', readonly='readonly', class='form-control')
                         }}</td>
-                    <td></td>
+                    <td><button type="button" class="btn btn-danger delete-barbarian-row"
+                            data-row-id="barbarian-row-0">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -108,6 +110,7 @@
     <div id="barbarian-fortifications-details"></div>
 </div>
 
+<script src="{{ url_for('static', filename='js/delete_row.js') }}"></script>
 <script src="{{ url_for('static', filename='js/army_details.js') }}"></script>
 <script src="{{ url_for('static', filename='js/fortification_details.js') }}"></script>
 <script src="{{ url_for('static', filename='js/calculations.js') }}"></script>

@@ -115,47 +115,84 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addForm(role, index) {
         var form = document.getElementById(role + '-form');
-        var formRow = document.querySelector(`#${role}-row-0`).cloneNode(true);
+        var newRow = document.createElement('tr');
+        newRow.id = role + '-row-' + index;
 
-        // Update the IDs and clear the values in the cloned form fields
-        formRow.id = role + '-row-' + index;
-        formRow.querySelectorAll('*').forEach((element) => {
-            if (element.id) {
-                element.id = element.id.replace('-0', '-' + index);
-            }
-            if (element.name) {
-                element.name = element.name.replace('-0', '-' + index);
-            }
-            if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
-                element.value = '';
-            }
-        });
+        newRow.innerHTML = `
+            <td>
+                <select id="${role}-force-${index}" class="form-control" name="${role}_force[${index}][force]">
+                    <option value="">Select Force</option>
+                </select>
+            </td>
+            <td>
+                <select id="${role}-order-${index}" class="form-control" name="${role}_force[${index}][order]">
+                    <option value="">Select Order</option>
+                </select>
+            </td>
+            <td>
+                <select id="${role}-ritual-${index}" class="form-control" name="${role}_force[${index}][ritual]">
+                    <option value="">Select Ritual</option>
+                </select>
+            </td>
+            <td><input type="text" id="${role}-strength-${index}" class="form-control" name="${role}_force[${index}][strength]" readonly></td>
+            <td></td>
+        `;
 
-        // Remove the 'readonly' attribute from the strength field
-        formRow.querySelector(`#${role}-strength-${index}`).removeAttribute('readonly');
-
-        // Attach event listener to the cloned force field
-        formRow.querySelector(`#${role}-force-${index}`).addEventListener('change', function () {
+        // Attach event listener to the force field
+        newRow.querySelector(`#${role}-force-${index}`).addEventListener('change', function () {
             updateFormFields(role, index);
         });
 
-        // Add delete button to the cloned row
+        // Add delete button to the new row
         var deleteButton = document.createElement('button');
         deleteButton.type = 'button';
         deleteButton.className = 'btn btn-danger';
-        deleteButton.innerText = 'Delete';
+        deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', function () {
-            formRow.remove();
+            newRow.remove();
         });
 
-        // Append delete button as the last column of the cloned row
-        var lastTd = formRow.querySelector('td:last-child');
-        lastTd.appendChild(deleteButton);
+        // Append delete button as the last column of the new row
+        newRow.lastElementChild.appendChild(deleteButton);
 
-        form.querySelector('tbody').appendChild(formRow);
+        form.querySelector('tbody').appendChild(newRow);
 
-        // Add input event listener to the strength field for validation
-        addStrengthInputListener(role, index);
+        // Fetch force options and populate the dropdown list
+        fetchForceOptions(role, index);
+    }
+
+    function fetchForceOptions(role, index) {
+        var forceDropdown = document.getElementById(`${role}-force-${index}`);
+        var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        // Fetch force options
+        fetch('/get_force_options', {
+            method: 'POST',
+            body: new URLSearchParams({
+                'role': role,
+                'csrf_token': csrfToken
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data.forces)) {
+                    forceDropdown.innerHTML = '<option value="">Select Force</option>';
+                    data.forces.forEach(force => {
+                        var option = document.createElement('option');
+                        option.value = force[0];
+                        option.textContent = force[1];
+                        forceDropdown.appendChild(option);
+                    });
+                } else {
+                    console.error('No forces data found');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+
+
     }
 
     // Function to add input event listener to the strength field for validation
@@ -166,15 +203,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to validate the strength input
+    /// Function to validate the strength input
     function validateStrength(role, index) {
         var maxStrength = parseInt(document.getElementById(role + '-strength-' + index).getAttribute('data-max-strength'));
         var strengthField = document.getElementById(role + '-strength-' + index);
+        var minStrength = maxStrength === 7500 ? 1500 : 1000;
 
         strengthField.addEventListener('blur', function () {
             var strengthInput = strengthField.value.trim();
 
-            if (strengthInput === '' || isNaN(strengthInput) || parseInt(strengthInput) <= 0 || parseInt(strengthInput) > maxStrength) {
+            if (strengthInput === '' || isNaN(strengthInput) || parseInt(strengthInput) < minStrength || parseInt(strengthInput) > maxStrength) {
                 strengthField.value = maxStrength;
             }
         });

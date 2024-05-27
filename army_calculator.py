@@ -125,23 +125,37 @@ def index():
     barbarian_forces = [(force.force_id, force.force_name) for force in Force.query.join(Nation).filter(Nation.nation_faction == 'Barbarian').all()]
     imperial_forces.insert(0, ('', 'Select Force'))
     barbarian_forces.insert(0, ('', 'Select Force'))
+    rituals = []
+    rituals.insert(0, ('', 'Select Ritual'))
+    orders = []
+    orders.insert(0, ('', 'Select Order'))
+    strength = 0
 
     imperial_form = ForcesForm()
     barbarian_form = ForcesForm()
     imperial_form.force.choices = imperial_forces
     barbarian_form.force.choices = barbarian_forces
+    imperial_form.order.choices = orders
+    barbarian_form.order.choices = orders
+    imperial_form.ritual.choices = rituals
+    barbarian_form.ritual.choices = rituals
+    imperial_form.strength.data = strength
+    barbarian_form.strength.data = strength
 
-    imperial_fortifications = [(fortification.fortification_id, fortification.fortification_name) for fortification in Fortification.query.filter(Fortification.fortification_id >= 6, Fortification.fortification_id < 34).all()]
-    imperial_fortifications.insert(0, ('', 'Select Fortification'))
-    barbarian_fortifications = [(fortification.fortification_id, fortification.fortification_name) for fortification in Fortification.query.filter(Fortification.fortification_id > 0, Fortification.fortification_id < 6).all()]
-    barbarian_fortifications.insert(0, ('', 'Select Fortification'))
+    return render_template('index.html', imperial_form=imperial_form, barbarian_form=barbarian_form)
 
-    imperial_fortifications_form = FortificationsForm()
-    barbarian_fortifications_form = FortificationsForm()
-    imperial_fortifications_form.fortification.choices = imperial_fortifications
-    barbarian_fortifications_form.fortification.choices = barbarian_fortifications
+@app.route('/get_force_options', methods=['POST'])
+def get_force_options():
+    role = request.form['role']
 
-    return render_template('index.html', imperial_form=imperial_form, barbarian_form=barbarian_form, imperial_fortification_form=imperial_fortifications_form, barbarian_fortification_form=barbarian_fortifications_form)
+    if role == 'imperial':
+        forces = [(force.force_id, force.force_name) for force in Force.query.join(Nation).filter(Nation.nation_faction == 'The Empire').all()]
+    elif role == 'barbarian':
+        forces = [(force.force_id, force.force_name) for force in Force.query.join(Nation).filter(Nation.nation_faction == 'Barbarian').all()]
+    else:
+        forces = []
+
+    return jsonify({'forces': forces})
 
 @app.route('/get_force_info', methods=['POST'])
 def get_force_info():
@@ -181,7 +195,9 @@ def get_orders_by_force():
 
     if force.nation_id == 7:
         national_orders = Order.query.filter(Order.order_id == 40).first()
-        order_list.append((national_orders.order_id, national_orders.order_name, national_orders.offensive_order))
+        if national_orders:
+            order_list.append((national_orders.order_id, national_orders.order_name, national_orders.offensive_order))
+        order_list = [order for order in order_list if order[0] != 5]
 
     additional_order_list = [(order.order_id, order.order_name, order.offensive_order) for order in quality.quality_orders]
     order_list.extend(additional_order_list)

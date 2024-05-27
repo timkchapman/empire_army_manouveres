@@ -1,3 +1,7 @@
+function removeRow(rowId) {
+    document.getElementById(rowId).remove();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Prevent enter key from submitting the form
     document.addEventListener('keydown', function (event) {
@@ -39,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </td>
             <td><input type="checkbox" id="${role}-fortification-besieged-${index}" class="form-check-input" name="${role}_fortification[${index}][is_besieged]"></td>
             <td><input type="text" id="${role}-fortification-strength-${index}" class="form-control" name="${role}_fortification[${index}][strength]"></td>
-            <td><button type="button" class="btn btn-danger" onclick="removeRow('${role}-fort-row-${index}')">Delete</button></td>
+            <td></td>
         `;
 
         var form = document.getElementById(role + '-form');
@@ -56,6 +60,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add blur event listener to the fortification strength field for validation
         addFortificationStrengthBlurListener(role, index);
+
+        // Create and attach the delete button
+        var deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.className = 'btn btn-danger';
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function () {
+            removeRow(`${role}-fort-row-${index}`);
+        });
+        formRow.lastElementChild.appendChild(deleteButton);
     }
 
     function addFortificationStrengthBlurListener(role, index) {
@@ -63,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         strengthField.addEventListener('blur', function () {
             var maxStrength = strengthField.getAttribute('data-max-strength');
             var strengthInput = strengthField.value.trim();
-            if (strengthInput === '' || isNaN(strengthInput) || parseInt(strengthInput) <= 0 || parseInt(strengthInput) > maxStrength) {
+            if (strengthInput === '' || isNaN(strengthInput) || parseInt(strengthInput) < 1000 || parseInt(strengthInput) > maxStrength) {
                 strengthField.value = maxStrength;
             }
         });
@@ -153,10 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById(role + '-fortification-strength-' + index).setAttribute('data-max-strength', maxStrength);
             })
             .catch(error => console.error('Error:', error));
-    }
-
-    function removeRow(rowId) {
-        document.getElementById(rowId).remove();
     }
 
     // Attach event listeners to initial fortification fields
