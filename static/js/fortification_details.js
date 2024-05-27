@@ -168,18 +168,5 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.error('Error:', error));
     }
-
-    // Attach event listeners to initial fortification fields
-    document.getElementById('imperial-fortification-0').addEventListener('change', function () {
-        updateFortificationStrength('imperial', 0);
-    });
-
-    document.getElementById('barbarian-fortification-0').addEventListener('change', function () {
-        updateFortificationStrength('barbarian', 0);
-    });
-
-    // Add initial validation listeners
-    addFortificationStrengthBlurListener('imperial', 0);
-    addFortificationStrengthBlurListener('barbarian', 0);
 });
 

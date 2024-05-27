@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // Display outcome and details in the summary table
                 showSummary(data);
-                showDetails(data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -116,36 +115,4 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('summary-offensive-victory-points-barbarian').textContent = data.outcome === 'Barbarian Victory' ? data.offensive_victory_points : '0';
         document.getElementById('summary-defensive-victory-points-barbarian').textContent = data.outcome === 'Barbarian Victory' ? data.defensive_victory_points : '0';
     }
-
-
-    // Function to display details
-    function showDetails(data) {
-        displayForceDetails('imperial', data.imperial_forces);
-        displayFortificationDetails('imperial', data.imperial_fortifications);
-        displayForceDetails('barbarian', data.barbarian_forces);
-        displayFortificationDetails('barbarian', data.barbarian_fortifications);
-    }
-
-    function displayForceDetails(role, forces) {
-        const container = document.getElementById(`${role}-forces-details`);
-        if (container) {
-            container.innerHTML = '';
-            forces.forEach((force, index) => {
-                const div = document.createElement('div');
-                div.textContent = `Force ${index + 1}: ${JSON.stringify(force)}`;
-                container.appendChild(div);
-            });
-        }
-    }
-
-    function displayFortificationDetails(role, fortifications) {
-        const container = document.getElementById(`${role}-fortifications-details`);
-        container.innerHTML = '';
-        fortifications.forEach((fortification, index) => {
-            const div = document.createElement('div');
-            div.textContent = `Fortification ${index + 1}: ${JSON.stringify(fortification)}`;
-            container.appendChild(div);
-        });
-    }
-
 });

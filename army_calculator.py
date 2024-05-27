@@ -242,94 +242,89 @@ def calculate_outcome():
     data = request.json
     
     # Initialize variables to store total strengths for forces and fortifications
-    total_imperial_force_casualties_inflicted = 0
-    total_imperial_force_victory_contribution = 0
-    total_imperial_force_offensive_victory_contribution = 0
-    total_imperial_force_defensive_victory_contribution = 0
-    total_imperial_fortification_casualties_inflicted = 0
-    total_imperial_fortification_victory_contribution = 0
-    total_barbarian_force_casualties_inflicted = 0
-    total_barbarian_force_victory_contribution = 0
-    total_barbarian_force_offensive_victory_contribution = 0
-    total_barbarian_force_defensive_victory_contribution = 0
-    total_barbarian_fortification_casualties_inflicted = 0
-    total_barbarian_fortification_victory_contribution = 0
+    total_imperial_casualties_inflicted = 0
+    total_imperial_victory_contribution = 0
+    imperial_offensive_victory_contribution = 0
+    imperial_defensive_victory_contribution = 0
+    total_barbarian_casualties_inflicted = 0
+    total_barbarian_victory_contribution = 0
+    barbarian_offensive_victory_contribution = 0
+    barbarian_defensive_victory_contribution = 0
+    offensive_victory_points = 0
+    defensive_victory_points = 0
     
     # Calculate total imperial force victory contribution and casualties inflicted
     for imperial_force_data in data['imperial_forces']:
         casualties_inflicted, offensive_victory_contribution, defensive_victory_contribution = calculate_force_strength(imperial_force_data)
-        total_imperial_force_casualties_inflicted += int(casualties_inflicted)
-        total_imperial_force_offensive_victory_contribution += int(offensive_victory_contribution)
-        total_imperial_force_defensive_victory_contribution += int(defensive_victory_contribution)
-        total_imperial_force_victory_contribution += int(offensive_victory_contribution) + int(defensive_victory_contribution)
+        total_imperial_casualties_inflicted += int(casualties_inflicted)
+        imperial_offensive_victory_contribution += int(offensive_victory_contribution)
+        imperial_defensive_victory_contribution += int(defensive_victory_contribution)
+        total_imperial_victory_contribution += int(offensive_victory_contribution) + int(defensive_victory_contribution)
 
     # Calculate total imperial fortification victory contribution and casualties inflicted
     for imperial_fort_data in data['imperial_fortifications']:
-        imperial_fortification_casualties_inflicted, imperial_fortification_victory_contribution = calculate_fortification_strength(imperial_fort_data)
-        total_imperial_fortification_victory_contribution += int(imperial_fortification_victory_contribution)
-        total_imperial_fortification_casualties_inflicted += int(imperial_fortification_casualties_inflicted)
+        casualties_inflicted, victory_contribution = calculate_fortification_strength(imperial_fort_data)
+        imperial_defensive_victory_contribution += int(victory_contribution)
+        total_imperial_victory_contribution += int(victory_contribution)
+        total_imperial_casualties_inflicted += int(casualties_inflicted)
 
     # Calculate total barbarian force victory contribution and casualties inflicted
     for barbarian_force_data in data['barbarian_forces']:
         casualties_inflicted, offensive_victory_contribution, defensive_victory_contribution = calculate_force_strength(barbarian_force_data)
-        total_barbarian_force_casualties_inflicted += int(casualties_inflicted)
-        total_barbarian_force_offensive_victory_contribution += int(offensive_victory_contribution)
-        total_barbarian_force_defensive_victory_contribution += int(defensive_victory_contribution)
-        total_barbarian_force_victory_contribution += int(offensive_victory_contribution) + int(defensive_victory_contribution)
+        total_barbarian_casualties_inflicted += int(casualties_inflicted)
+        barbarian_offensive_victory_contribution += int(offensive_victory_contribution)
+        barbarian_defensive_victory_contribution += int(defensive_victory_contribution)
+        total_barbarian_victory_contribution += int(offensive_victory_contribution) + int(defensive_victory_contribution)
 
     # Calculate total barbarian fortification victory contribution and casualties inflicted
     for barbarian_fort_data in data['barbarian_fortifications']:
-        barbarian_fortification_casualties_inflicted, barbarian_fortification_victory_contribution = calculate_fortification_strength(barbarian_fort_data)
-        total_barbarian_fortification_victory_contribution += int(barbarian_fortification_victory_contribution)
-        total_barbarian_fortification_casualties_inflicted += int(barbarian_fortification_casualties_inflicted)
+        casualties_inflicted, victory_contribution = calculate_fortification_strength(barbarian_fort_data)
+        barbarian_defensive_victory_contribution += int(victory_contribution)
+        total_barbarian_victory_contribution += int(victory_contribution)
+        total_barbarian_casualties_inflicted += int(casualties_inflicted)
 
-    imperial_victory_contribution = total_imperial_force_victory_contribution + total_imperial_fortification_victory_contribution
-    barbarian_victory_contribution = total_barbarian_force_victory_contribution + total_barbarian_fortification_victory_contribution
-    imperial_casualties_inflicted = total_imperial_force_casualties_inflicted + total_imperial_fortification_casualties_inflicted
-    barbarian_casualties_inflicted = total_barbarian_force_casualties_inflicted + total_barbarian_fortification_casualties_inflicted
-
-    if imperial_victory_contribution > barbarian_victory_contribution:
+    if total_imperial_victory_contribution > total_barbarian_victory_contribution:
         outcome = 'Imperial Victory'
-        total_victory_points = int((imperial_victory_contribution - barbarian_victory_contribution) / 1000)
-        if total_imperial_force_offensive_victory_contribution == 0:
+        total_victory_points = int((total_imperial_victory_contribution - total_barbarian_victory_contribution) / 1000)
+        if imperial_offensive_victory_contribution == 0:
             offensive_victory_points = 0
-            defensive_victory_points = int((total_imperial_force_defensive_victory_contribution - barbarian_victory_contribution) / 1000)
-        elif total_imperial_force_defensive_victory_contribution == 0:
-            offensive_victory_points = int((total_imperial_force_offensive_victory_contribution - barbarian_victory_contribution) / 1000)
+            defensive_victory_points = int((imperial_defensive_victory_contribution - total_barbarian_victory_contribution) / 1000)
+        elif imperial_defensive_victory_contribution == 0:
+            offensive_victory_points = int((imperial_offensive_victory_contribution - total_barbarian_victory_contribution) / 1000)
             defensive_victory_points = 0
         else:
-            difference = (imperial_victory_contribution - barbarian_victory_contribution)
-            offensive_split = total_imperial_force_offensive_victory_contribution / imperial_victory_contribution
-            defensive_split = total_imperial_force_defensive_victory_contribution / imperial_victory_contribution
+            difference = int((total_imperial_victory_contribution - total_barbarian_victory_contribution))
+            offensive_split = imperial_offensive_victory_contribution / total_imperial_victory_contribution
+            defensive_split = imperial_defensive_victory_contribution / total_imperial_victory_contribution
             offensive_victory_points = int((difference * offensive_split) / 1000 + 0.5)
             defensive_victory_points = int((difference * defensive_split) / 1000 + 0.5)
 
-    elif imperial_victory_contribution == barbarian_victory_contribution:
+    elif total_imperial_victory_contribution == total_barbarian_victory_contribution:
         outcome = 'Draw'
         total_victory_points = 0
     
     else:
         outcome = 'Barbarian Victory'
-        total_victory_points = int((barbarian_victory_contribution - imperial_victory_contribution) / 1000)
-        if total_barbarian_force_offensive_victory_contribution == 0:
+        total_victory_points = int((total_barbarian_victory_contribution - total_imperial_victory_contribution) / 1000)
+        if barbarian_offensive_victory_contribution == 0:
             offensive_victory_points = 0
-            defensive_victory_points = int((total_barbarian_force_defensive_victory_contribution - imperial_victory_contribution) / 1000)
-        elif total_barbarian_force_defensive_victory_contribution == 0:
-            offensive_victory_points = int((total_barbarian_force_offensive_victory_contribution - imperial_victory_contribution) / 1000)
+            defensive_victory_points = int((barbarian_defensive_victory_contribution - total_imperial_victory_contribution) / 1000)
+        elif barbarian_defensive_victory_contribution == 0:
+            offensive_victory_points = int((barbarian_offensive_victory_contribution - total_imperial_victory_contribution) / 1000)
             defensive_victory_points = 0
         else:
-            difference = (barbarian_victory_contribution - imperial_victory_contribution)
-            offensive_split = total_barbarian_force_offensive_victory_contribution / barbarian_victory_contribution
-            defensive_split = total_barbarian_force_defensive_victory_contribution / barbarian_victory_contribution
+            difference = total_barbarian_victory_contribution - total_imperial_victory_contribution
+            offensive_split = barbarian_offensive_victory_contribution / total_barbarian_victory_contribution
+            defensive_split = barbarian_defensive_victory_contribution / total_barbarian_victory_contribution
             offensive_victory_points = int((difference * offensive_split) / 1000 + 0.5)
             defensive_victory_points = int((difference * defensive_split) / 1000 + 0.5)
 
     # Summarize the outcome
     summary = {
-        'imperial_victory_contribution': str(imperial_victory_contribution),
-        'barbarian_victory_contribution': str(barbarian_victory_contribution),
-        'imperial_casualties_inflicted': str(imperial_casualties_inflicted),
-        'barbarian_casualties_inflicted': str(barbarian_casualties_inflicted),
+        'imperial_victory_contribution': str(total_imperial_victory_contribution),
+        'barbarian_victory_contribution': str(total_barbarian_victory_contribution),
+        'imperial_casualties_inflicted': str(total_imperial_casualties_inflicted),
+        'barbarian_casualties_inflicted': str(total_barbarian_casualties_inflicted),
         'outcome': outcome,
         'victory_points': str(total_victory_points),
         'offensive_victory_points': str(offensive_victory_points),
@@ -358,8 +353,6 @@ def calculate_force_strength(force_data):
 
 def calculate_fortification_strength(fort_data):
     fort_casualties_inflicted = 0
-    fort = fort_data['fortification']
-    fort = Fortification.query.filter_by(Fortification_id = fort).first()
     if fort_data['strength'].isdigit():
         fort_strength = int(fort_data['strength'])
     if fort_data['besieged']:
