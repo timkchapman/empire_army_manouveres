@@ -1,0 +1,254 @@
+[
+    {
+        "quality_id": 0,
+        "quality_name": "",
+        "quality_effects": "",
+        "quality_descriptors": "",
+        "quality_description": ""
+    },
+    {
+        "quality_id": 1,
+        "quality_name": "Conquering",
+        "quality_effects": "Can use the push the line order when attacking.",
+        "quality_descriptors": "Methodical, Inspired",
+        "quality_description": "A conquering army focuses on capturing territory, driving the defenders of the land before them. The newly restored Gryphon's Pride of Dawn has this quality, representative of Dawnish ambitions in the Barrens."
+    },
+    {
+        "quality_id": 2,
+        "quality_name": "Cruel",
+        "quality_effects": "Can use the merciless onslaught order when attacking.",
+        "quality_descriptors": "Dread, Fearsome, Merciless, Monstrous, Terrifying",
+        "quality_description": "A cruel army breaks the morale of its opponents. It may employ ruthless tactics, torture of prisoners and civilians, monstrous auxiliaries or psychological tricks that cause even the most disciplined army to prefer flight over capture. Enemy forces often withdraw well before their troops are in danger of being routed, aware that overconfidence in the face of a cruel opponent could lead to the loss of their entire army. The Iron Helms of Varushka has this quality. The Dance of Blood of Navarr (destroyed by the Jotun in 245YE) also used to employ dreadful tactics against their barbarian opponents."
+    },
+    {
+        "quality_id": 3,
+        "quality_name": "Cunning",
+        "quality_effects": "Can use the whatever it takes order when attacking.",
+        "quality_descriptors": "None.",
+        "quality_description": "A cunning army contains soldiers adept at employing unorthodox - but effective - tactics. The force makes great use of venom and poison (both mundane and magical), as well as setting traps and luring enemies into ambushes. They take advantage of situations where an ally has engaged an enemy to launch surprise attacks against their weak spots, taking particular pains to kill enemy healers, magicians, and supply trains. Since the Winter Solstice 381YE, the Quiet Step army of Navarr has the Cunning quality."
+    },
+    {
+        "quality_id": 4,
+        "quality_name": "Daring",
+        "quality_effects": "Can use the daring raid order when attacking.",
+        "quality_descriptors": "None.",
+        "quality_description": "This enhanced quality was gained by the Red Wind Corsairs shortly before the Winter Solstice 381YE. It was gained as a response to an opportunity, the Freeborn assembly sent Gonzalo i Riqueza to spread a message that capturing and ransoming enemies was preferable to simply robbing them. Battle is a chance to seize the wealth of the enemy - war is about increasing your affluence at the expense of your foes, rather than to see them dead. The opportunity came in the wake of a well-planned raid against an Grendel-controlled Legacy in Spiral. The Freeborn soldiers of the Red Wind Corsairs embrace their instinct to treat their defeated enemies with respect and take their money not their lives Instead of the plunder order, the general can submit the daring raid order. Although some Wintermark armies find fighting alongside a foraging army distasteful - many Wintermark heroes prefer the idea of ransoming defeated enemies to butchering them and have no reason to dislike a daring army."
+    },
+    {
+        "quality_id": 5,
+        "quality_name": "Disciplined",
+        "quality_effects": "Can use the strategic defence order when defending.",
+        "quality_descriptors": "Strategic, Tactical, Vigilant",
+        "quality_description": "A disciplined army is well-organised and relentlessly drilled. Every soldier is a professional who knows their place in the chain of command. The Granite Pillar of Highguard and the Tusks of the Marches are armies known for their discipline. Several attempts have been made in the past by the sentinels of Urizen to raise a disciplined, strategically minded army that embrace the national philosophy of arete."
+    },
+    {
+        "quality_id": 6,
+        "quality_name": "Driven",
+        "quality_effects": "Can use the order to take their land when attacking. Can use the grinding advance order when attacking.",
+        "quality_descriptors": "None.",
+        "quality_description": "A driven army is focused on seizing the land of the enemy, which is ripe for conquest. With steel in their fists and in their spirits, they will not care where they fight - they will take whatever they need from the land and the people and they will make it their own. Since the 382YE Summer Solstice the The Golden Axe, of Varushka, has embraced the legacy of the Vard; to conquer what can be conquered, to bar their door against what cannot be defeated, and to endure what must be endured without flinching."
+    },
+    {
+        "quality_id": 7,
+        "quality_name": "Engineer",
+        "quality_effects": "Can use the storm the walls order when attacking. Can use the dig in order when defending.",
+        "quality_descriptors": "Sappers",
+        "quality_description": "An engineer army encompasses all that a siege army can achieve when attacking fortifications, however it is much more skilled in all forms of engineering, allowing the army to assist with large building projects or to just dig in, fortifying a region with ramparts, ditches, embankments and temporary camps that provide some of the benefits of a fortification. The Towerjacks of the League are the only Imperial army with this quality."
+    },
+    {
+        "quality_id": 8,
+        "quality_name": "Far Sighted",
+        "quality_effects": "Can use the read the signs order when defending.",
+        "quality_descriptors": "None.",
+        "quality_description": "By leaning on the wise mystics, cunning icewalkers, and proud rune-smiths who advise the army, the general of the Fist of the Mountain can employ divination to allow them to find the perfect place to move their army. Such methods are unpredictable and difficult to make sense of, perversely they often mean less fighting rather than more, since the army is almost never where the enemy expects it to be. But the benefits of such surprising strategy cannot be denied, somehow the force always seems to be in the perfect place at the perfect time."
+    },
+    {
+        "quality_id": 9,
+        "quality_name": "Fast",
+        "quality_effects": "Can use the forced march order when attacking. Can use the desperate reinfocement order when defending.",
+        "quality_descriptors": "Durable, Pathfinder, Organised",
+        "quality_description": "A fast army is able to move quickly over long distances. This is not just a quality of speed - moving thousands of soldiers overland is a daunting logistical prospect. Within the Empire, a fast army takes advantage of the trods whenever it can, supplementing their magic with forced marches and expertly organised baggage trains. The Freeborn Fire of the South and the Navarr Black Thorns are both known for their speed and mobility."
+    },
+    {
+        "quality_id": 10,
+        "quality_name": "Favoured",
+        "quality_effects": "Can call upon the Eternals of the Summer Realm to enhance the army.",
+        "quality_descriptors": "None.",
+        "quality_description": "Originally renown for the support of the people of Dawn the army now benefits from the patronage of several Regents of Summer. Originally proposed just before the Autumn Equinox 384YE the enchantresses of Dawn opted to request the favour of the Summer Lion, the Queen of Ice and Darkness, the Lord of Summer Stars, the Knight of the Crossroads, and the Regent of the Eternal Sea. At present the general can call on the favours of Eleonaris and Meraud."
+    },
+    {
+        "quality_id": 11,
+        "quality_name": "Foraging",
+        "quality_effects": "Can use the plunder order when attacking.",
+        "quality_descriptors": "Looter, Scavenger, Snaffler, Raider, Maggots (derogatory)",
+        "quality_description": "A foraging army excels at stripping enemy settlements and casualties of valuables. The Freeborn Red Wind Corsairs were known for their ability to gather resources in enemy territory, prior to their embrace of the idea of ransoming their enemies rather than simply robbing them. Some Wintermark armies find fighting alongside a foraging army distasteful - the deeply ingrained cultural dislike for 'maggots' is well known."
+    },
+    {
+        "quality_id": 12,
+        "quality_name": "Freedom Fighters",
+        "quality_effects": "Can use the break the chains order when attacking. Can use the hit and run order when defending.",
+        "quality_descriptors": "Methodical, Inspired",
+        "quality_description": "After the Autumn Equinox 381YE the soldiers of the Winter Sun experienced a powerful revelation relating to the generations of their ancestors who had lived and died as slaves. Despite the turmoil and wrath, some of the soldiers of the Winter Sun gain strength from the experience, and from the voices of their enslaved ancestors. Some swore oaths to ensure that the evil of slavery - evil they have experienced first hand - is wiped from the earth. Many of these orcs wear medallions of bone or wood in the shape of hammers, in remembrance both of the tools their ancestors used to break rocks and of the hammers used ultimately to break their chains. Following the Winter Solstice the general, Bloodcrow Morg'ur, encouraged the soldiers to embrace this revelation, permanently changing the Winter Sun quality from guerilla to freedom fighters. In the long run, soldiers of the army will be less comfortable around human armies from Varushka, Wintermark, and the League - but they are disciplined enough to ensure that there are no significant incidents if they are required to fight alongside the descendants of the people who once kept them as chattel."
+    },
+    {
+        "quality_id": 13,
+        "quality_name": "Glorious",
+        "quality_effects": "Can use the triumphant charge order when attacking. Can use the final stand order when defending.",
+        "quality_descriptors": "Crazed, Honourable, Righteous",
+        "quality_description": "A glorious army is full of fighting spirit, and is capable of utter commitment to the act of war. Stories are still told of the Burning Falcon, a Freeborn army with many kohan that was wiped out to the last soldier holding off a Jotun force three times its own size during the invasion of Kallavesa in 248YE; troubadours still sing of the last-ditch, foolhardy assault of the Dawnish Gryphon's Pride against the barbarians in the Barrens. Today, the Dawnish Hounds of Glory are glorious, the Green Shield of Wintermark are known for their heroism, while the Burning Falcon are once again full of passionate kohan committed to war."
+    },
+    {
+        "quality_id": 14,
+        "quality_name": "Guerilla",
+        "quality_effects": "Can use the hit and run order when defending.",
+        "quality_descriptors": "Adaptable, Hunter, Ranger, Territorial",
+        "quality_description": "A guerilla army is adept at fighting in difficult terrain. It is often organised into many small companies that can fight independently of each other, employing scouts and messengers to keep each element of the force appraised of the status and position of other forces. The Northern Eagle army of Varushka has extensive experience fighting in difficult terrain; the Winter Sun of the Imperial Orcs incorporated hard lessons learned by the original rebels fighting the Empire in the southern territories and had this quality prior to the spiritual revelation of Autumn 381YE that gave them the freedom fighters advanced quality."
+    },
+    {
+        "quality_id": 15,
+        "quality_name": "Hard Bitten",
+        "quality_effects": "Can use the make them pay order when defending.",
+        "quality_descriptors": "Garrison, Unyielding, Stubborn",
+        "quality_description": "A hard-bitten army refuses to give ground to invaders. When fighting from defensive positions they can inflict massive casualties on enemy forces that dare to approach them. There are currently no Imperial armies with this quality; the Strong Reeds of the Marches are a notoriously stubborn army who embraced much older, secretive stratagems, to make their enemies pay for every inch of Marcher soil they try to take, whilst the Druj armies with this quality are adept at using traps and treacherous tactics to slowly grind an aggressor down as they attempt to claim barbarian territory."
+    },
+    {
+        "quality_id": 16,
+        "quality_name": "Heroic",
+        "quality_effects": "Can give the order that none shall pass when defending. Can use the triumphant charge order when attacking. Can use the final stand order when defending",
+        "quality_descriptors": "None.",
+        "quality_description": "The Green Shields of Wintermark are capable of impossible deeds, and their spirit is undiminished in the face of any threat. They know that the hero's tale ends with a good death and they are ready to pay with their lives if they must. Their esprit de corps is peerless and their commitment to battle means they are prepared to make any sacrifice to achieve what must be done. This allows their general to issue unique orders, taking enormous risks where necessary."
+    },
+    {
+        "quality_id": 17,
+        "quality_name": "Highborn",
+        "quality_effects": "Highborn armies automatically generate an opportunity each season",
+        "quality_descriptors": "None.",
+        "quality_description": "Every Highborn child is taught that Virtue and vice are contagious - that a virtuous life leads the faithful to further righteous action. To have their deeds recognised after having achieved so much makes them eager to emulate the great heroes of Highguard - to take the fight to the enemy and to embrace their manifest destiny to drive the enemies of humanity before them. Following the victories against the Druj and the slavers of Rachensgrab, the nation of Highguard is united behind their virtuous armies. If any Highborn army engages an enemy then the virtue of the soldiers inspires allies and terrifies enemies. The Highborn armies automatically generate an opportunity for their assembly to carry out a mandate. The mandate will influence the ongoing conflict in one or more of the campaigns where the Highborn armies are engaged in. The number of armies will not be a factor. The orders given by the generals will continue to be critical, with the precise wording of the order given by the general shaping any mandate."
+    },
+    {
+        "quality_id": 18,
+        "quality_name": "Highest Discipline",
+        "quality_effects": "The army can use the Celestial Key, Bond of Tears, Transcendent Claw, Mountainous Ascent, or Coiling Chain techniques once each year.",
+        "quality_descriptors": "None.",
+        "quality_description": "The ilium-infused mage armour and mage weapons allow the Citadel Guard to bring their magic to bear during a military campaign in unique ways. This quality does not alter the ability to use the General as conduit for delivering magic, nor their ability to gather crystal mana when undertaking arcane consolidation. No other army in the world possesses mastery of these techniques, and some of them are risky to employ. As such there may be unexpected interactions between the five techniques and the power of enchantments, curses, or even the actions of other armies. In any given season the general may employ one technique, but each technique can only be employed once each year. The pool 'resets' in Summer each year - the season where a new general of the Citadel Guard could be appointed."
+    },
+    {
+        "quality_id": 19,
+        "quality_name": "Indomitable Glory",
+        "quality_effects": "Can use either of the no matter the cost or triumphant charge orders when attacking. Can use the final stand order when defending.",
+        "quality_descriptors": "None.",
+        "quality_description": "Every member of an army with indomitable glory is committed to the eternal quest for glory and the need to prove that they are the greatest heroes of the Empire. Their unwavering Ambition, Courage, and Pride in the face of any danger means that they are prepared to take any chance to achieve glory. This allows their general to issue unique orders, taking enormous risks where necessary. Only the Hounds of Glory of Dawn possess the indomitable glory quality."
+    },
+    {
+        "quality_id": 20,
+        "quality_name": "Magic",
+        "quality_effects": "Rituals that target a territory may be performed using the general of this army as a focus. Can use the arcane consolidation order when attacking.",
+        "quality_descriptors": "Arcane, Necromantia, Occult, Sorcerous",
+        "quality_description": "A magic army contains many magicians, and soldiers trained to fight alongside magicians and help with the targeting of powerful rituals. If they are defending a territory then they can provide a bounty of crystal mana to their general for use in creating helpful enchantments. Rumours suggest that the native defenders of Karsk who have been assisting the Varushkan generals during their fight against the Thule also possess this quality. Several Thule armies possess similar sorcerous powers. The Axou and the Jarmish also field several armies with this quality. Before the use of the unmade trove granted them cyclic magic, and ultimately the highest discipline, the Citadel Guard of Urizen possessed this quality."
+    },
+    {
+        "quality_id": 21,
+        "quality_name": "Mercenary",
+        "quality_effects": "Can use the siege, scouting, foraging resilent, or skirmishing qualities once each per year.",
+        "quality_descriptors": "Flexible, Free Company",
+        "quality_description": "A mercenary army has experience working with and integrating mercenaries and other independent military units. They may employ siege engineers, expert scouts, wagon raiders, light infantry or free companies, but each group can only be employed once each year. The Wolves of War is a League army that attracts mercenary banners and free companies from across the empire."
+    },
+    {
+        "quality_id": 22,
+        "quality_name": "Physick",
+        "quality_effects": "Can use the tend the fallen order when defending.",
+        "quality_descriptors": "Apothecary, Grimnir, Healer, Herbalist, Hospitaller, Support",
+        "quality_description": " physick army contains a large number of battle-field hardened healers of various traditions, and soldiers adept at fighting alongside them. The force excels at using medical skills, establishing mobile field hospitals, and applying principles of triage to save those who can be saved. The Valiant Pegasus of Highguard has the physick quality. The newly reformed Wintermark Bloodcloaks, also possess this quality, as did the original Bloodcloaks who were lost to the Thule during the reign of Empress Brannan."
+    },
+    {
+        "quality_id": 23,
+        "quality_name": "Relentless",
+        "quality_effects": "Can use the cut them down order when attacking.",
+        "quality_descriptors": "Bloodthirsty, Ruthless, Savage",
+        "quality_description": "A relentless army is capable of focused, sustained attacks against their enemies. They may have superior equipment, advanced combat training, or simply possess an unquenchable thirst for the blood of their foes. Within the Empire, the Bounders are known for their relentless pursuit of their enemies while the Summer Storm of the Imperial Orcs are known for their military acumen and carefully channelled bloodlust. It is also a common quality for Jotun and Druj armies."
+    },
+    {
+        "quality_id": 24,
+        "quality_name": "Resilient",
+        "quality_effects": "Can use the grinding advance order when attacking.",
+        "quality_descriptors": "Cautious, Defensive, Responsive",
+        "quality_description": "A resilient army fights defensively, even while advancing. It often represents an army that specialises in heavy armour and shields, but it might also represent an army of soldiers with above-average fortitude or endurance. The heavily armoured Golden Sun of Dawn is a resilient army."
+    },
+    {
+        "quality_id": 25,
+        "quality_name": "Resourceful",
+        "quality_effects": "This army can benefit from emergency resupply regardless of what territory they are in or whether they are engaged by the enemy. This army can benefit from natural resupply regardless of what territory they are in as long as they are not engaged by the enemy, even if they are taking an attacking order.",
+        "quality_descriptors": "Quartermasters, Superior Logistics",
+        "quality_description": "A resourceful army has expert logistical support. It can quickly distribute resources and assign new soldiers, even while under attack. It may also represent an army whose soldiers are doggedly committed to their cause, so that soldiers who are so badly hurt they would normally be decommissioned fight to be allowed to rejoin their units. The Eastern Sky army of Dawn and the Drakes of the Marches enjoy the support of the people of their nation, represented by regular investment of people and resources to keep the army at fighting strength."
+    },
+    {
+        "quality_id": 26,
+        "quality_name": "Secretive",
+        "quality_effects": "Can use the lay low order when attacking. Can use the grinding advance order when attacking.",
+        "quality_descriptors": "None.",
+        "quality_description": "A secretive army contains many people skilled at survival in some of the most inhospitable parts of the Empire. The barren mountains of the Mournwold, the dangerous fens of Bregasland or the deep Feni woods are examples. These places are virtually impassable to a regular army, but a secretive army may lay low, splitting up into smaller bands that can spread out and hide in some of the most inaccessible parts of the region. The Strong Reeds amy of the Marches possesses this quality, honed by years of experience fighting in the Bregas marshes and in Kallavesa."
+    },
+    {
+        "quality_id": 27,
+        "quality_name": "Scouting",
+        "quality_effects": "Can use the gather intelligence order when attacking. Can use the guard the gates order when defending",
+        "quality_descriptors": "Astute, Farsight, Infiltration",
+        "quality_description": "A scouting army is adept at gathering information about opposing forces. While it is active in a territory, associated rangers, agents and magicians gather intelligence about opposing forces in the area. They compose a report specifically for their general which includes information abut significant forces in the area. Because this information is gathered by mundane means, and by agents in the field, it is rarely impeded by magical effects such as Drawing the Penumbral Veil. The Highborn unconquered auxiliaries of the Seventh Wave are excellent scouts. In both cases, when this quality provides information about armies or fortifications, fighting strength is estimated in thousands using the terms low (between 0 and 333); mid (between 334 and 666); and high (between 667 and 999). Thus an army or fortification described as being in the 'low four thousands' could mean it had between 4000 and 4,333 effective fighting strength."
+    },
+    {
+        "quality_id": 28,
+        "quality_name": "Siege",
+        "quality_effects": "Can use the storm the walls order when attacking.",
+        "quality_descriptors": "Engineer, Sappers",
+        "quality_description": "A siege army excels at attacking fortifications. The army is experienced with fighting over the walls of enemy castles, and supported by engineers and artisans who can quickly built siege engines. The League army of the Towerjacks were originally recommissioned with this quality before taking advantage of an opportunity to study in the Holberg University for a season and gaining the Engineer quality."
+    },
+    {
+        "quality_id": 29,
+        "quality_name": "Skirmishing",
+        "quality_effects": "Can use the outmaneuver order when attacking.",
+        "quality_descriptors": "Manouverable, Flanking, Tactical",
+        "quality_description": "A skirmishing army specialises in outmaneuvering its opponents. The mobility and independence of the troops composing the army makes it extremely effective at exploiting situations where some or all of the enemy armies have committed to defence, rather than attack. There are currently no Imperial armies with this quality; the venerable Thundering Tide, composed of the descendants of the old Highborn light cavalry units, were disbanded during the reign of Empress Mariika. Many of the unconquered and cataphracts that used to belong to this army would go on to join the Seventh Wave"
+    },
+    {
+        "quality_id": 30,
+        "quality_name": "Thornbound",
+        "quality_effects": "Can use the poison thorns order when attacking.",
+        "quality_descriptors": "None.",
+        "quality_description": "The army is able to use their mastery of Spring magic and their expertise with herbs to create powerful poisons to apply to their weapons. These poisons are designed to kill quickly and without suffering, ensuring that the enemy do not linger in pain. Only one Imperial army has this unique quality - Isaella's Dance - which gains its power from the many vates and masters of herb lore that accompany the soldiers."
+    },
+    {
+        "quality_id": 31,
+        "quality_name": "Venomous",
+        "quality_effects": "Can use the fire int he blood order when attacking.",
+        "quality_descriptors": "Ambush, Assassin, Poisonous, Treacherous",
+        "quality_description": "A venomous army contains soldiers skilled in the use of poison and unorthodox tactics. The force contributes these experts to support allied attacks, luring enemies into traps or taking advantage of engagements to savagely ambush their foes. There is no Imperial army with this quality at the moment."
+    },
+    {
+        "quality_id": 32,
+        "quality_name": "Watchful",
+        "quality_effects": "Can use the harry the flanks order when attacking. Can use the watch the passes order when defending.",
+        "quality_descriptors": "None.",
+        "quality_description": "A watchful army contains many skilled scouts and trackers who are adept at guarding the perimeter of a territory no matter how difficult as well as searching for threats and enemies in a territory. As a result it may issue the defensive order to watch the passes, if they are in a territory that is completely controlled by the Empire but the general is concerned that enemy forces may attack, or to harry the flanks, if they are engaged in a campaign where the enemy is already present. The Bounders army of the Marches contain many beaters and landskeepers who are especially concerned with protecting the borders of their lands."
+    },
+    {
+        "quality_id": 33,
+        "quality_name": "Hillwise",
+        "quality_effects": "The army can use the go to ground order when fighting in a territory where their side controls a region with the hill quality.",
+        "quality_descriptors": "None.",
+        "quality_description": "Granted by the ritual Eyes of the Hills from Urizen lore, the soldiers of this army have a supernatural understanding of and ability to move through hills and similar rugged terrain. They can only take advantage of this while defending a territory that contains a region with the hills quality that is under the control of their side."
+    },
+    {
+        "quality_id": 34,
+        "quality_name": "Seawatch",
+        "quality_effects": "The army can use the burn them to the waterline order when fighting in a territory where their side controls a region with the coastal quality.",
+        "quality_descriptors": "None.",
+        "quality_description": "Granted by the ritual Fire on the Water, the soldiers of this army are joined by heralds of Estavus who bring with them powerful siege engines, metal catapults that hurl brilliant sapphire flames, which spread supernaturally fast, and resist all efforts to quench them - water simply seems to make them burn even more fiercely. They can only be dealt with by smothering them and can cause catastrophic damage to ships struck by them. They can only take advantage of this while defending a territory that contains a region with the coastal quality that is under the control of their side."
+    },
+    {
+        "quality_id": 35,
+        "quality_name": "Agramant",
+        "quality_effects": "The army can use the cut them down order.",
+        "quality_descriptors": "None.",
+        "quality_description": "Granted by the ritual Loosen the Shackles form Urizen lore, the soldiers of the army are filled with an unquenchable hunger to kill as many of their foes as possible. This powerful urge can cause unpredictable additional effects on those fighting alongside the army, especially those with the draughir lineage."
+    }
+]

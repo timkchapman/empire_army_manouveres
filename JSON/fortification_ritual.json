@@ -1,0 +1,32 @@
+[
+    {
+        "fortification_ritual_id": 0,
+        "fortification_ritual_name": "",
+        "fortification_ritual_effects": "",
+        "fortification_effective_strength_modifier": 0
+    },
+    {
+        "fortification_ritual_id": 1,
+        "fortification_ritual_name": "Golden Ramparts",
+        "fortification_ritual_effects": "The fortification's effective strength is increased by 1,500 over the next season.",
+        "fortification_effective_strength_modifier": 1500
+    },
+    {
+        "fortification_ritual_id": 2,
+        "fortification_ritual_name": "Ramparts of Ashlar",
+        "fortification_ritual_effects": "The fortification's effective strength is increased by 3,000 over the next season.",
+        "fortification_effective_strength_modifier": 3000
+    },
+    {
+        "fortification_ritual_id": 3,
+        "fortification_ritual_name": "Stalwart Stand on Solid Ground",
+        "fortification_ritual_effects": "The fortification will not be destroyed over the next year unless it is reduced to 0 strength.",
+        "fortification_effective_strength_modifier": 0
+    },
+    {
+        "fortification_ritual_id": 4,
+        "fortification_ritual_name": "Stone's Unyielding Defiance",
+        "fortification_ritual_effects": "The fortification restores 250 strength and its effective strength is increased by 1,500 over the next season.",
+        "fortification_effective_strength_modifier": 1500
+    }
+]

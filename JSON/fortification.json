@@ -1,0 +1,230 @@
+[
+    {
+        "fortification_id": 0,
+        "fortification_name": "",
+        "fortification_level": 0,
+        "fortification_maximum_strength": 0
+    },
+    {
+        "fortification_id": 1,
+        "fortification_name": "Rank 1 Fortification",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 2,
+        "fortification_name": "Rank 2 Fortification",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 3,
+        "fortification_name": "Rank 3 Fortification",
+        "fortification_level": 3,
+        "fortification_maximum_strength": 9000
+    },
+    {
+        "fortification_id": 4,
+        "fortification_name": "Rank 4 Fortification",
+        "fortification_level": 4,
+        "fortification_maximum_strength": 12000
+    },
+    {
+        "fortification_id": 5,
+        "fortification_name": "Rank 5 Fortification",
+        "fortification_level": 5,
+        "fortification_maximum_strength": 15000
+    },
+    {
+        "fortification_id": 6,
+        "fortification_name": "Aleksandra's Watch",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 7,
+        "fortification_name": "Ballaghruh",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 8,
+        "fortification_name": "Beacons of Wintermark",
+        "fortification_level": 0,
+        "fortification_maximum_strength": 0
+    },
+    {
+        "fortification_id": 9,
+        "fortification_name": "Court of the White Fountain",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 10,
+        "fortification_name": "Farstrider's Watch",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 11,
+        "fortification_name": "Forte Fidelis",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 12,
+        "fortification_name": "Fortress of Kalant",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 13,
+        "fortification_name": "Great Chains of Sarvos",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 14,
+        "fortification_name": "Grimhold",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 15,
+        "fortification_name": "Holt of the Oak",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 16,
+        "fortification_name": "La Redotta Rezia",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 17,
+        "fortification_name": "Landskeeper's Bulkwark",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 18,
+        "fortification_name": "Olgafdottirshal",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 19,
+        "fortification_name": "Our Lady of Pride",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 20,
+        "fortification_name": "Remember Exile",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 21,
+        "fortification_name": "Reumah's Rest",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 22,
+        "fortification_name": "Spires of Dusk",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 23,
+        "fortification_name": "Temeschwar",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 24,
+        "fortification_name": "The Adamant Gate",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 25,
+        "fortification_name": "The Castle of Thorns",
+        "fortification_level": 3,
+        "fortification_maximum_strength": 9000
+    },
+    {
+        "fortification_id": 26,
+        "fortification_name": "The Eastern Guard",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 27,
+        "fortification_name": "The Palace of Apulian",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 28,
+        "fortification_name": "The Silent Sentinel",
+        "fortification_level": 2,
+        "fortification_maximum_strength": 6000
+    },
+    {
+        "fortification_id": 29,
+        "fortification_name": "The Whispering Strand",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 30,
+        "fortification_name": "The Will of Wintermark",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 31,
+        "fortification_name": "Towers of Zulgan Tash",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 32,
+        "fortification_name": "Walls of Cargo",
+        "fortification_level": 1,
+        "fortification_maximum_strength": 3000
+    },
+    {
+        "fortification_id": 33,
+        "fortification_name": "Walls of Holberg",
+        "fortification_level": 5,
+        "fortification_maximum_strength": 15000
+    },
+    {
+        "fortification_id": 34,
+        "fortification_name": "Frozen Citadel of Cathan Canae",
+        "fortification_level": 0,
+        "fortification_maximum_strength": 2000
+    },
+    {
+        "fortification_id": 35,
+        "fortification_name": "Dripping Echoes  of the Fen",
+        "fortification_level": 0,
+        "fortification_maximum_strength": 2000
+    },
+    {
+        "fortification_id": 36,
+        "fortification_name": "Forge the Wooden Fastness",
+        "fortification_level": 0,
+        "fortification_maximum_strength": 2000
+    },
+    {
+        "fortification_id": 37,
+        "fortification_name": "The Basalt Citadel",
+        "fortification_level": 0,
+        "fortification_maximum_strength": 2000
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "force_ritual_id": 0,
+        "force_ritual_name": "",
+        "army_ritual": false,
+        "force_ritual_effects": "",
+        "force_ritual_quality_id": 0,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 1,
+        "force_ritual_name": "Bound by Common Cause",
+        "army_ritual": true,
+        "force_ritual_effects": "The army gains additional strength for the purpose of determining victory from up to 75 military units that are assigned to support it for the next season.",
+        "force_ritual_quality_id": 0,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 2,
+        "force_ritual_name": "Clarity of the Master Strategist",
+        "army_ritual": true,
+        "force_ritual_effects": "The army's effective strength is increased by 2,000 for the purpose of determining victory for the next season.",
+        "force_ritual_quality_id": 0,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 3,
+        "force_ritual_name": "Eyes of the Hills",
+        "army_ritual": true,
+        "force_ritual_effects": "Replaces the army's quality with Hillwise for the next season.",
+        "force_ritual_quality_id": 43,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 4,
+        "force_ritual_name": "Find the Best Path",
+        "army_ritual": true,
+        "force_ritual_effects": "Replaces the army's quality with Fast for the next season.",
+        "force_ritual_quality_id": 4,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 5,
+        "force_ritual_name": "Fire on the Water",
+        "army_ritual": true,
+        "force_ritual_effects": "Replaces the army's quality with Seawatch for the next season.",
+        "force_ritual_quality_id": 44,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 6,
+        "force_ritual_name": "Knights of Glory",
+        "army_ritual": true,
+        "force_ritual_effects": "The army's effective strength is increased by 2,000.",
+        "force_ritual_quality_id": 0,
+        "force_effective_strength_modifier": 2000
+    },
+    {
+        "force_ritual_id": 7,
+        "force_ritual_name": "Machines of Destruction",
+        "army_ritual": true,
+        "force_ritual_effects": "Replaces the army's quality with Siege for the next season.",
+        "force_ritual_quality_id": 28,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 8,
+        "force_ritual_name": "Quickening Cold Meat",
+        "army_ritual": true,
+        "force_ritual_effects": "The army's effective strength is increased by 1,000 for the next year.",
+        "force_ritual_quality_id": 0,
+        "force_effective_strength_modifier": 1000
+    },
+    {
+        "force_ritual_id": 9,
+        "force_ritual_name": "Swords in the Noonday Sun",
+        "army_ritual": true,
+        "force_ritual_effects": "Replaces the army's quality with Relentless for the next season.",
+        "force_ritual_quality_id": 23,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 10,
+        "force_ritual_name": "Why Sulemaine Walked Away from the Baker",
+        "army_ritual": true,
+        "force_ritual_effects": "The effectiveness of the Fire in the Blood order used by an opposing army in the same campaign is halved against the army for the next season.",
+        "force_ritual_quality_id": 0,
+        "force_effective_strength_modifier": 0
+    },
+    {
+        "force_ritual_id": 11,
+        "force_ritual_name": "Loosen the Shackles",
+        "army_ritual": true,
+        "force_ritual_effects": "Enchants a campaign army with Agramant's aid, changing its quality and filling soldiers with murderous intent.",
+        "force_ritual_quality_id": 45,
+        "force_effective_strength_modifier": 0
+    }
+]

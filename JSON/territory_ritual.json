@@ -1,0 +1,44 @@
+[
+    {
+        "territory_ritual_id": 0,
+        "territory_ritual_name": "",
+        "territory_ritual_effects": "",
+        "territory_ritual_casualties": 0,
+        "territory_ritual_modifier": 0
+    },
+    {
+        "territory_ritual_id": 1,
+        "territory_ritual_name": "Mountain Remembers its Youth",
+        "territory_ritual_effects": "All fortifications and armies in the territory suffer a share of 500 casualties over the next season. Casualties suffered by fortifications in this way are reduced by 20%.",
+        "territory_ritual_casualties": 500,
+        "territory_ritual_modifier": 0
+    },
+    {
+        "territory_ritual_id": 2,
+        "territory_ritual_name": "Thunderous Tread of the Trees",
+        "territory_ritual_effects": "All fortifications and armies in the territory suffer a share of 500 casualties over the next year. Casualties suffered by fortifications in this way are increased by 20%.",
+        "territory_ritual_casualties": 500,
+        "territory_ritual_modifier": 0
+    },
+    {
+        "territory_ritual_id": 3,
+        "territory_ritual_name": "Foam and Spittle of the Furious Sea",
+        "territory_ritual_effects": "All navies in the territory suffer a share of 500 casualties over the next season.",
+        "territory_ritual_casualties": 500,
+        "territory_ritual_modifier": 0
+    },
+    {
+        "territory_ritual_id": 4,
+        "territory_ritual_name": "Rivers of Life",
+        "territory_ritual_effects": "All casualties suffered by campaign armies fighting in the territory are halved. Navies are only affected if they are taking a coastal order.",
+        "territory_ritual_casualties": 0,
+        "territory_ritual_modifier": 0.5
+    },
+    {
+        "territory_ritual_id": 5,
+        "territory_ritual_name": "Rivers Run Red",
+        "territory_ritual_effects": "All casualties suffered by campaign armies fighting in the territory are doubled. Navies are only affected if they are taking a coastal order.",
+        "territory_ritual_casualties": 0,
+        "territory_ritual_modifier": 2
+    }
+]
