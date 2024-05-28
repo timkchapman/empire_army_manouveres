@@ -148,14 +148,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 </select>
             </td>
             <td><input type="text" id="${role}-strength-${index}" class="form-control" name="${role}_force[${index}][strength]" readonly></td>
-            <td>
-                <select id="${role}-order-${index}" class="form-control" name="${role}_force[${index}][order]">
-                    <option value="">Select Order</option>
-                </select>
-            </td>
+            
             <td>
                 <select id="${role}-ritual-${index}" class="form-control" name="${role}_force[${index}][ritual]">
                     <option value="">Select Ritual</option>
+                </select>
+            </td>
+            <td>
+                <select id="${role}-order-${index}" class="form-control" name="${role}_force[${index}][order]">
+                    <option value="">Select Order</option>
                 </select>
             </td>
             <td></td>

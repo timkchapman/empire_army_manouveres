@@ -101,18 +101,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to display summary
     function showSummary(data) {
-        document.getElementById('summary-force-imperial').textContent = 'Imperial';
-        document.getElementById('summary-victory-contribution-imperial').textContent = data.imperial_victory_contribution;
-        document.getElementById('summary-casualties-inflicted-imperial').textContent = data.imperial_casualties_inflicted;
-        document.getElementById('summary-victory-points-imperial').textContent = data.outcome === 'Imperial Victory' ? data.victory_points : '0';
-        document.getElementById('summary-offensive-victory-points-imperial').textContent = data.outcome === 'Imperial Victory' ? data.offensive_victory_points : '0';
-        document.getElementById('summary-defensive-victory-points-imperial').textContent = data.outcome === 'Imperial Victory' ? data.defensive_victory_points : '0';
+        document.getElementById('summary-total-victory-points').textContent = data.total_victory_points;
+        document.getElementById('summary-offensive-victory-points').textContent = data.offensive_victory_points;
+        document.getElementById('summary-defensive-victory-points').textContent = data.defensive_victory_points;
+        document.getElementById('summary-outcome').textContent = data.outcome;
 
-        document.getElementById('summary-force-barbarian').textContent = 'Barbarian';
-        document.getElementById('summary-victory-contribution-barbarian').textContent = data.barbarian_victory_contribution;
-        document.getElementById('summary-casualties-inflicted-barbarian').textContent = data.barbarian_casualties_inflicted;
-        document.getElementById('summary-victory-points-barbarian').textContent = data.outcome === 'Barbarian Victory' ? data.victory_points : '0';
-        document.getElementById('summary-offensive-victory-points-barbarian').textContent = data.outcome === 'Barbarian Victory' ? data.offensive_victory_points : '0';
-        document.getElementById('summary-defensive-victory-points-barbarian').textContent = data.outcome === 'Barbarian Victory' ? data.defensive_victory_points : '0';
+        const forcesTable = document.getElementById('summary-forces-details');
+        forcesTable.innerHTML = ''; // Clear any previous content
+        for (const key in data.forces_data) {
+            const force = data.forces_data[key];
+            const forceRow = document.createElement('tr');
+            forceRow.className = 'table-dark';
+            forceRow.innerHTML = `
+                <td>${force.force_name}</td>
+                <td>${force.casualties_taken}</td>
+                <td>${force.remaining_strength}</td>
+            `;
+            forcesTable.appendChild(forceRow);
+        }
     }
+
 });

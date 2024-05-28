@@ -122,7 +122,7 @@
     },
     {
         "order_id": 11,
-        "order_name": "Whatever it takes",
+        "order_name": "Whatever it Takes",
         "offensive_order": true,
         "order_effects": "All casualties inflicted by this army are increased by a tenth. All casualties suffered by this army are increased by a tenth. All casualties inflicted by allied armies in the same territory who have issued attacking orders are increased by a tenth.",
         "order_description": "The army employs vicious tactics to set up ambushes, lay traps, and kill high-value targets such as healers and magicians. The army takes every opportunity to punish their opponents. At the same time, they weaken and distract their enemies, so that their allies can gain the opportunity to kill front line troops.",
@@ -303,7 +303,7 @@
         "order_effects": "Casualties suffered by this enemy are decreased by one fifth. The army protects an allied force that is taking defensive orders, taking all the casualties that force would take in their place.",
         "order_description": "A general who gives the order that none shall pass may name a single allied force that is taking defensive orders in the campaign. Any casualties that the heroic army would suffer normally are applied less the 20% reduction listed. In addition to the normal casualties suffered, the army will also take all the casualties that would have been suffered by the army they are protecting (these casualties are not diminished in any way, they are transferred one for one)",
         "casualties_inflicted_modifier": 0,
-        "casualties_suffered_modifier": 0.2,
+        "casualties_suffered_modifier": -0.2,
         "territory_claimed_modifier": 0,
         "territory_defence_modifier": 0
     },
@@ -336,9 +336,9 @@
         "order_effects": "All casualties suffered by this army are reduced by a fifth. All casualties suffered by allied armies in the same territory who are taking defensive orders are reduced by a tenth. The ability of this army to defend territory is reduced by a fifth.",
         "order_description": "The army establishes mobile field hospitals, and supply points while ensuring allied forces are accompanied by talented physicks and soldiers trained to support them. Medicinal herbs are gathered, and healing or defensive potions distributed to officers. The army focuses on moving casualties away from battlefields, patching them up, and returning them to the front.",
         "casualties_inflicted_modifier": 0,
-        "casualties_suffered_modifier": 0.2,
+        "casualties_suffered_modifier": -0.2,
         "territory_claimed_modifier": 0,
-        "territory_defence_modifier": 0.2
+        "territory_defence_modifier": -0.2
     },
     {
         "order_id": 31,
