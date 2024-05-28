@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateFormFields(role, index) {
         var selectedForceId = document.getElementById(role + '-force-' + index).value;
         var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+        var forceQuality = 0;
 
         if (selectedForceId === '') {
             document.getElementById(role + '-strength-' + index).value = '';
@@ -28,8 +29,22 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Fetch force info
-        fetch('/get_force_info', {
+        fetchForceInfo(selectedForceId, role, index, csrfToken)
+            .then(forceQuality => {
+                fetchOrdersByForce(selectedForceId, role, index, csrfToken, forceQuality)
+                    .catch(error => console.error('Error:', error));
+            })
+            .catch(error => console.error('Error:', error));
+
+        fetchRitualsByForce(selectedForceId, role, index, csrfToken)
+            .catch(error => console.error('Error:', error));
+
+        // Add input event listener to the strength field for validation
+        addStrengthInputListener(role, index);
+    }
+
+    function fetchForceInfo(selectedForceId, role, index, csrfToken) {
+        return fetch('/get_force_info', {
             method: 'POST',
             body: new URLSearchParams({
                 'force_id': selectedForceId,
@@ -46,14 +61,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 strengthField.setAttribute('data-max-strength', maxStrength);
                 strengthField.value = maxStrength;
                 strengthField.removeAttribute('readonly');
+                var forceQuality = data.quality;
+                return forceQuality;
             })
             .catch(error => console.error('Error:', error));
+    }
 
-        // Fetch orders by force
-        fetch('/get_orders_by_force', {
+    function fetchOrdersByForce(selectedForceId, role, index, csrfToken, forceQuality) {
+        console.log('force quality', forceQuality)
+        return fetch('/get_orders_by_force', {
             method: 'POST',
             body: new URLSearchParams({
                 'force_id': selectedForceId,
+                'force_quality': forceQuality, // Pass force quality to the backend
                 'csrf_token': csrfToken
             }),
             headers: {
@@ -72,9 +92,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .catch(error => console.error('Error:', error));
+    }
 
-        // Fetch rituals by force
-        fetch('/get_rituals_by_force', {
+
+    function fetchRitualsByForce(selectedForceId, role, index, csrfToken) {
+        return fetch('/get_rituals_by_force', {
             method: 'POST',
             body: new URLSearchParams({
                 'force_id': selectedForceId,
@@ -94,12 +116,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     option.textContent = ritual[1];
                     ritualSelect.appendChild(option);
                 });
+                ritualSelect.addEventListener('change', function () {
+                    updateStrengthWithRitual(role, index);
+                });
             })
             .catch(error => console.error('Error:', error));
-
-        // Add input event listener to the strength field for validation
-        addStrengthInputListener(role, index);
     }
+
 
     document.getElementById('add-imperial').addEventListener('click', function (e) {
         e.preventDefault();
@@ -124,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="">Select Force</option>
                 </select>
             </td>
+            <td><input type="text" id="${role}-strength-${index}" class="form-control" name="${role}_force[${index}][strength]" readonly></td>
             <td>
                 <select id="${role}-order-${index}" class="form-control" name="${role}_force[${index}][order]">
                     <option value="">Select Order</option>
@@ -134,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="">Select Ritual</option>
                 </select>
             </td>
-            <td><input type="text" id="${role}-strength-${index}" class="form-control" name="${role}_force[${index}][strength]" readonly></td>
             <td></td>
         `;
 
@@ -217,4 +240,43 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    function updateStrengthWithRitual(role, index) {
+        var selectedRitualId = document.getElementById(role + '-ritual-' + index).value;
+        var strengthField = document.getElementById(role + '-strength-' + index);
+        var maxStrength = parseInt(strengthField.getAttribute('data-max-strength'));
+        var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        if (selectedRitualId === '') {
+            strengthField.value = maxStrength;
+            return;
+        }
+
+        // Fetch ritual effect
+        fetch('/get_force_ritual_effect', {
+            method: 'POST',
+            body: new URLSearchParams({
+                'ritual_id': selectedRitualId,
+                'csrf_token': csrfToken
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                var ritualQuality = data.force_ritual_quality_id;
+                if (ritualQuality !== 0) {
+                    // Update orders based on the ritual quality
+                    var selectedForceId = document.getElementById(role + '-force-' + index).value;
+                    fetchOrdersByForce(selectedForceId, role, index, csrfToken, ritualQuality)
+                        .catch(error => console.error('Error:', error));
+                }
+
+
+
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
 });

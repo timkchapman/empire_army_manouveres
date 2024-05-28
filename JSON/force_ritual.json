@@ -28,7 +28,7 @@
         "force_ritual_name": "Eyes of the Hills",
         "army_ritual": true,
         "force_ritual_effects": "Replaces the army's quality with Hillwise for the next season.",
-        "force_ritual_quality_id": 43,
+        "force_ritual_quality_id": 33,
         "force_effective_strength_modifier": 0
     },
     {
@@ -36,7 +36,7 @@
         "force_ritual_name": "Find the Best Path",
         "army_ritual": true,
         "force_ritual_effects": "Replaces the army's quality with Fast for the next season.",
-        "force_ritual_quality_id": 4,
+        "force_ritual_quality_id": 9,
         "force_effective_strength_modifier": 0
     },
     {
@@ -44,7 +44,7 @@
         "force_ritual_name": "Fire on the Water",
         "army_ritual": true,
         "force_ritual_effects": "Replaces the army's quality with Seawatch for the next season.",
-        "force_ritual_quality_id": 44,
+        "force_ritual_quality_id": 34,
         "force_effective_strength_modifier": 0
     },
     {
@@ -92,7 +92,7 @@
         "force_ritual_name": "Loosen the Shackles",
         "army_ritual": true,
         "force_ritual_effects": "Enchants a campaign army with Agramant's aid, changing its quality and filling soldiers with murderous intent.",
-        "force_ritual_quality_id": 45,
+        "force_ritual_quality_id": 35,
         "force_effective_strength_modifier": 0
     }
 ]
