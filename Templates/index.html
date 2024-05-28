@@ -9,19 +9,19 @@
             <thead>
                 <tr class="table-info">
                     <th>Force/Fortification</th>
+                    <th>Strength</th>
                     <th>Ritual</th>
                     <th>Order/Is Besieged</th>
-                    <th>Strength</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody id="imperial-forces">
                 <tr id="imperial-row-0" class="table-dark">
                     <td>{{ imperial_form.force(id='imperial-force-0', class='form-control') }}</td>
-                    <td>{{ imperial_form.ritual(id='imperial-ritual-0', class='form-control') }}</td>
-                    <td>{{ imperial_form.order(id='imperial-order-0', class='form-control') }}</td>
                     <td>{{ imperial_form.strength(id='imperial-strength-0', readonly='readonly', class='form-control')
                         }}</td>
+                    <td>{{ imperial_form.ritual(id='imperial-ritual-0', class='form-control') }}</td>
+                    <td>{{ imperial_form.order(id='imperial-order-0', class='form-control') }}</td>
                     <td></td>
                 </tr>
             </tbody>
@@ -37,19 +37,19 @@
             <thead>
                 <tr class="table-info">
                     <th>Force/Fortification</th>
+                    <th>Strength</th>
                     <th>Ritual</th>
                     <th>Order/Is Besieged</th>
-                    <th>Strength</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody id="barbarian-forces">
                 <tr id="barbarian-row-0" class="table-dark">
                     <td>{{ barbarian_form.force(id='barbarian-force-0', class='form-control') }}</td>
-                    <td>{{ barbarian_form.ritual(id='barbarian-ritual-0', class='form-control') }}</td>
-                    <td>{{ barbarian_form.order(id='barbarian-order-0', class='form-control') }}</td>
                     <td>{{ barbarian_form.strength(id='barbarian-strength-0', readonly='readonly', class='form-control')
                         }}</td>
+                    <td>{{ barbarian_form.ritual(id='barbarian-ritual-0', class='form-control') }}</td>
+                    <td>{{ barbarian_form.order(id='barbarian-order-0', class='form-control') }}</td>
                     <td><button type="button" class="btn btn-danger delete-barbarian-row"
                             data-row-id="barbarian-row-0">Delete</button>
                     </td>
@@ -111,7 +111,7 @@
 </div>
 
 <script src="{{ url_for('static', filename='js/delete_row.js') }}"></script>
-<script src="{{ url_for('static', filename='js/army_details.js') }}"></script>
+<script src="{{ url_for('static', filename='js/force_details.js') }}"></script>
 <script src="{{ url_for('static', filename='js/fortification_details.js') }}"></script>
 <script src="{{ url_for('static', filename='js/calculations.js') }}"></script>
 {% endblock %}

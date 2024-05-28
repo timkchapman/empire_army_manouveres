@@ -163,6 +163,7 @@ def get_force_info():
     force = Force.query.get(force_id)
     if force:
         return jsonify({
+            'quality': force.quality.quality_id,
             'large': force.large
         })
     return jsonify({'error': 'Force not found'}), 404
@@ -176,6 +177,17 @@ def get_rituals_by_force():
 
     return jsonify({'rituals': ritual_list})
 
+@app.route('/get_force_ritual_effect', methods=['POST'])
+def get_force_ritual_effect():
+    ritual_id = request.form.get('ritual_id')
+    ritual = Force_Ritual.query.get(ritual_id)
+    if ritual:
+        return jsonify({
+            'force_effective_strength_modifier': ritual.force_effective_strength_modifier,
+            'force_ritual_quality_id': ritual.force_ritual_quality_id
+        })
+    return jsonify({'error': 'Ritual not found'}), 404
+
 @app.route('/get_orders_by_force', methods=['POST'])
 def get_orders_by_force():
     force_id = request.form.get('force_id')
@@ -186,7 +198,8 @@ def get_orders_by_force():
     if not force:
         return jsonify({'orders': []})
     
-    quality = force.quality
+    force_quality = request.form.get('force_quality') 
+    quality = Quality.query.get(force_quality)
     if not quality:
         return jsonify({'orders': []})
     
@@ -236,6 +249,16 @@ def get_rituals_by_fortification():
     fortification_ritual_list = [(ritual.fortification_ritual_id, ritual.fortification_ritual_name) for ritual in fortification_rituals]
 
     return jsonify({'rituals': fortification_ritual_list})
+
+@app.route('/get_fortification_ritual_effect', methods=['POST'])
+def get_fortification_ritual_effect():
+    ritual_id = request.form.get('ritual_id')
+    ritual = Fortification_Ritual.query.get(ritual_id)
+    if ritual:
+        return jsonify({
+            'fortification_effective_strength_modifier': ritual.fortification_effective_strength_modifier,
+        })
+    return jsonify({'error': 'Ritual not found'}), 404
 
 @app.route('/calculate_outcome', methods=['POST'])
 def calculate_outcome():
@@ -334,27 +357,38 @@ def calculate_outcome():
     return jsonify(summary)
 
 def calculate_force_strength(force_data):
+    victory_modifier = 0
     force_strength = int(force_data['strength'])
     order_id = force_data['order']
-    if order_id == '':
-        order_id = 0
-    order = Order.query.filter_by(order_id=order_id).first()
+    order = Order.query.get(order_id)
+    force_ritual_id = force_data['ritual']
+    force_ritual = Force_Ritual.query.get(force_ritual_id)
+    ritual_strength = force_ritual.force_effective_strength_modifier
+    force_strength += ritual_strength
     casualties_inflicted_modifier = order.casualties_inflicted_modifier
     casualties_inflicted = int(((force_strength * (1 + casualties_inflicted_modifier))/10))
+    if force_ritual.force_ritual_id == 2:
+        victory_modifier = 2000
     if order.offensive_order:
         offensive_victory_modifier = order.territory_claimed_modifier
-        offensive_victory_contribution = force_strength * (1 + offensive_victory_modifier)
+        offensive_victory_contribution = force_strength * (1 + offensive_victory_modifier) + victory_modifier
         defensive_victory_contribution = 0
     else:
         defensive_victory_modifier = order.territory_defence_modifier
-        defensive_victory_contribution = force_strength * (1 + defensive_victory_modifier)
+        defensive_victory_contribution = force_strength * (1 + defensive_victory_modifier) + victory_modifier
         offensive_victory_contribution = 0
     return casualties_inflicted, offensive_victory_contribution, defensive_victory_contribution
 
 def calculate_fortification_strength(fort_data):
     fort_casualties_inflicted = 0
+    fort_ritual_id = fort_data['ritual']
+    if fort_ritual_id == '':
+        fort_ritual_id = 0
+    fort_ritual = Fortification_Ritual.query.get(fort_ritual_id)
+    fort_ritual_strength = fort_ritual.fortification_effective_strength_modifier
     if fort_data['strength'].isdigit():
         fort_strength = int(fort_data['strength'])
+    fort_strength += fort_ritual_strength
     if fort_data['besieged']:
         fort_victory_contribution = fort_strength * 2
         fort_casualties_inflicted = fort_strength/10

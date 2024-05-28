@@ -2,6 +2,7 @@ function removeRow(rowId) {
     document.getElementById(rowId).remove();
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
     // Prevent enter key from submitting the form
     document.addEventListener('keydown', function (event) {
@@ -36,13 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="">Select Fortification</option>
                 </select>
             </td>
+            <td><input type="text" id="${role}-fortification-strength-${index}" class="form-control" name="${role}_fortification[${index}][strength]"></td>
             <td>
                 <select id="${role}-fortification-ritual-${index}" class="form-control" name="${role}_fortification[${index}][ritual]">
                     <option value="">Select Ritual</option>
                 </select>
             </td>
             <td><input type="checkbox" id="${role}-fortification-besieged-${index}" class="form-check-input" name="${role}_fortification[${index}][is_besieged]"></td>
-            <td><input type="text" id="${role}-fortification-strength-${index}" class="form-control" name="${role}_fortification[${index}][strength]"></td>
             <td></td>
         `;
 
@@ -60,6 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add blur event listener to the fortification strength field for validation
         addFortificationStrengthBlurListener(role, index);
+
+        // Listen for changes in ritual dropdown
+        document.getElementById(role + '-fortification-ritual-' + index).addEventListener('change', function () {
+            updateStrengthWithRitual(role, index);
+        });
 
         // Create and attach the delete button
         var deleteButton = document.createElement('button');
@@ -165,6 +171,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 var maxStrength = data.strength;
                 document.getElementById(role + '-fortification-strength-' + index).value = maxStrength;
                 document.getElementById(role + '-fortification-strength-' + index).setAttribute('data-max-strength', maxStrength);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Function to update fortification strength with ritual effect
+    function updateStrengthWithRitual(role, index) {
+        var selectedRitualId = document.getElementById(role + '-fortification-ritual-' + index).value;
+        var strengthField = document.getElementById(role + '-fortification-strength-' + index);
+        var maxStrength = parseInt(strengthField.getAttribute('data-max-strength'));
+        var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        if (selectedRitualId === '') {
+            strengthField.value = maxStrength;
+            return;
+        }
+
+        // Fetch fortification ritual effect
+        fetch('/get_fortification_ritual_effect', {
+            method: 'POST',
+            body: new URLSearchParams({
+                'ritual_id': selectedRitualId,
+                'csrf_token': csrfToken
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                var strengthModifier = data.fortification_effective_strength_modifier;
+                var newStrength = maxStrength + strengthModifier;
+                strengthField.value = newStrength;
             })
             .catch(error => console.error('Error:', error));
     }
