@@ -299,7 +299,7 @@ def calculate_outcome():
 
     # Calculate total imperial fortification victory contribution and casualties inflicted
     for imperial_fort_data in data['imperial_fortifications']:
-        force_id = imperial_fort_data['force']
+        force_id = imperial_fort_data['fortification']
         force = Fortification.query.get(force_id)
         casualties_inflicted, victory_contribution = calculate_fortification_strength(imperial_fort_data)
         imperial_defensive_victory_contribution += int(victory_contribution)
@@ -332,7 +332,7 @@ def calculate_outcome():
 
     # Calculate total imperial fortification victory contribution and casualties inflicted
     for barbarian_fort_data in data['barbarian_fortifications']:
-        force_id = imperial_fort_data['force']
+        force_id = imperial_fort_data['fortification']
         force = Fortification.query.get(force_id)
         casualties_inflicted, victory_contribution = calculate_fortification_strength(barbarian_fort_data)
         barbarian_defensive_victory_contribution += int(victory_contribution)
@@ -362,11 +362,6 @@ def calculate_outcome():
         forces_data[force_data]['casualties_taken'] = barbarian_casualties_taken[force_data]
         forces_data[force_data]['remaining_strength'] = barbarian_remaining_strength[force_data]
 
-    print('total victory Points: ', total_victory_points)
-    print('offensive victory points: ', offensive_victory_points)
-    print('defensive victory points: ', defensive_victory_points)
-    print('outcome: ', outcome)
-    print('forces: ', forces_data)
     # Summarize the outcome
     summary = {
         'total_victory_points': str(total_victory_points),
@@ -441,6 +436,7 @@ def calculate_victory_points(total_imperial_victory_contribution, imperial_offen
     if total_imperial_victory_contribution > total_barbarian_victory_contribution:
         outcome = 'Imperial Victory'
         total_victory_points = int((total_imperial_victory_contribution - total_barbarian_victory_contribution) / 1000)
+
         if imperial_offensive_victory_contribution == 0:
             offensive_victory_points = 0
             defensive_victory_points = int((imperial_defensive_victory_contribution - total_barbarian_victory_contribution) / 1000)
@@ -448,11 +444,21 @@ def calculate_victory_points(total_imperial_victory_contribution, imperial_offen
             offensive_victory_points = int((imperial_offensive_victory_contribution - total_barbarian_victory_contribution) / 1000)
             defensive_victory_points = 0
         else:
-            difference = int((total_imperial_victory_contribution - total_barbarian_victory_contribution))
+            difference = total_imperial_victory_contribution - total_barbarian_victory_contribution
             offensive_split = imperial_offensive_victory_contribution / total_imperial_victory_contribution
             defensive_split = imperial_defensive_victory_contribution / total_imperial_victory_contribution
-            offensive_victory_points = int((difference * offensive_split) / 1000 + 0.5)
-            defensive_victory_points = int((difference * defensive_split) / 1000 + 0.5)
+
+            # Calculate victory points without rounding to integers
+            offensive_victory_points = int(difference * offensive_split / 1000)
+            defensive_victory_points = int(difference * defensive_split / 1000)
+
+        # Adjust the split to ensure the total victory points remain consistent
+        remaining_points = total_victory_points - (int(offensive_victory_points) + int(defensive_victory_points))
+        if remaining_points != 0:
+            if offensive_split > defensive_split:
+                offensive_victory_points += remaining_points
+            else:
+                defensive_victory_points += remaining_points
 
     elif total_imperial_victory_contribution == total_barbarian_victory_contribution:
         outcome = 'Draw'
@@ -482,6 +488,8 @@ def distribute_casualties(total_casualties_inflicted, forces, outcome, defensive
     for force in forces[:]:
         if 'besieged' in force and not force['besieged']:
             forces.remove(force)
+        if 'besieged' not in force and force['order'] == "42":
+            forces.remove(force)
 
     for force in forces:
         modifier = 0
@@ -493,7 +501,7 @@ def distribute_casualties(total_casualties_inflicted, forces, outcome, defensive
             order_id = 0
         order = Order.query.get(order_id)
         modifier = 1 + order.casualties_suffered_modifier
-
+        
         additional_casualty_reduction_modifier = 0
         for other_force in forces:
             if other_force == force:
@@ -508,7 +516,7 @@ def distribute_casualties(total_casualties_inflicted, forces, outcome, defensive
                 if other_order and other_order.order_name == "Tend the Fallen":
                     additional_casualty_reduction_modifier = -0.1
                 modifier += additional_casualty_reduction_modifier
-                print('additional modifier: ', modifier)
+
         if (outcome == 'Imperial Victory' and force in imperial_forces) or (outcome == 'Barbarian Victory' and force in barbarian_forces):
             modifier -= (defensive_victory_points/100)
 

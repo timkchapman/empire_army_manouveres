@@ -10,7 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
 
         const imperialForces = collectForces('imperial');
+        console.log(imperialForces);
+        console.log(imperialForces.length)
         const barbarianForces = collectForces('barbarian');
+        console.log(barbarianForces);
+        console.log(barbarianForces.length)
+        if (imperialForces.length === 0 || barbarianForces.length === 0) {
+            alert('Please select combatants for both sides.');
+            return;
+        }
+
         const imperialFortifications = collectFortifications('imperial');
         const barbarianFortifications = collectFortifications('barbarian');
 
@@ -64,7 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         order: orderValue,
                         ritual: ritualValue
                     };
-                    forces.push(force);
+                    if (force.force.trim() !== '') {
+                        forces.push(force);
+                    }
                 }
             });
         }
