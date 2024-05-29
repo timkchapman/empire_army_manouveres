@@ -17,10 +17,13 @@ document.addEventListener('DOMContentLoaded', function () {
         updateFormFields('barbarian', 0);
     });
 
+    document.getElementById('barbarian-force-selector').addEventListener('change', function () {
+        updateBarbarianForces();
+    });
+
     function updateFormFields(role, index) {
         var selectedForceId = document.getElementById(role + '-force-' + index).value;
         var csrfToken = document.querySelector('input[name="csrf_token"]').value;
-        var forceQuality = 0;
 
         if (selectedForceId === '') {
             document.getElementById(role + '-strength-' + index).value = '';
@@ -39,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchRitualsByForce(selectedForceId, role, index, csrfToken)
             .catch(error => console.error('Error:', error));
 
-        // Add input event listener to the strength field for validation
         addStrengthInputListener(role, index);
     }
 
@@ -68,12 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function fetchOrdersByForce(selectedForceId, role, index, csrfToken, forceQuality) {
-        console.log('force quality', forceQuality)
         return fetch('/get_orders_by_force', {
             method: 'POST',
             body: new URLSearchParams({
                 'force_id': selectedForceId,
-                'force_quality': forceQuality, // Pass force quality to the backend
+                'force_quality': forceQuality,
                 'csrf_token': csrfToken
             }),
             headers: {
@@ -93,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.error('Error:', error));
     }
-
 
     function fetchRitualsByForce(selectedForceId, role, index, csrfToken) {
         return fetch('/get_rituals_by_force', {
@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error:', error));
     }
 
-
     document.getElementById('add-imperial').addEventListener('click', function (e) {
         e.preventDefault();
         addForm('imperial', imperialCount);
@@ -134,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         addForm('barbarian', barbarianCount);
         barbarianCount++;
+        updateBarbarianForces();
     });
 
     function addForm(role, index) {
@@ -148,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 </select>
             </td>
             <td><input type="text" id="${role}-strength-${index}" class="form-control" name="${role}_force[${index}][strength]" readonly></td>
-            
             <td>
                 <select id="${role}-ritual-${index}" class="form-control" name="${role}_force[${index}][ritual]">
                     <option value="">Select Ritual</option>
@@ -159,37 +158,69 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="">Select Order</option>
                 </select>
             </td>
-            <td></td>
+            <td><button type="button" class="btn btn-danger delete-${role}-row" data-row-id="${role}-row-${index}">Delete</button></td>
         `;
-
-        // Attach event listener to the force field
-        newRow.querySelector(`#${role}-force-${index}`).addEventListener('change', function () {
-            updateFormFields(role, index);
-        });
-
-        // Add delete button to the new row
-        var deleteButton = document.createElement('button');
-        deleteButton.type = 'button';
-        deleteButton.className = 'btn btn-danger';
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', function () {
-            newRow.remove();
-        });
-
-        // Append delete button as the last column of the new row
-        newRow.lastElementChild.appendChild(deleteButton);
 
         form.querySelector('tbody').appendChild(newRow);
 
-        // Fetch force options and populate the dropdown list
-        fetchForceOptions(role, index);
+        document.querySelector(`.delete-${role}-row[data-row-id="${role}-row-${index}"]`).addEventListener('click', function () {
+            document.getElementById(`${role}-row-${index}`).remove();
+        });
+
+        if (role === 'barbarian') {
+            updateBarbarianForces();
+        } else {
+            fetchForceOptions(role, index);
+        }
+
+        document.getElementById(`${role}-force-${index}`).addEventListener('change', function () {
+            updateFormFields(role, index);
+        });
+    }
+
+    function updateBarbarianForces() {
+        var selectedBarbarian = document.getElementById('barbarian-force-selector').value;
+        var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        if (selectedBarbarian === '') {
+            for (let i = 0; i < barbarianCount; i++) {
+                document.getElementById('barbarian-force-' + i).innerHTML = '<option value="">Select Force</option>';
+            }
+            return;
+        }
+
+        fetch('/get_force_options', {
+            method: 'POST',
+            body: new URLSearchParams({
+                'role': 'barbarian',
+                'barbarian': 'true',
+                'selected_barbarian': selectedBarbarian,
+                'csrf_token': csrfToken
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                for (let i = 0; i < barbarianCount; i++) {
+                    var forceDropdown = document.getElementById('barbarian-force-' + i);
+                    forceDropdown.innerHTML = '<option value="">Select Force</option>';
+                    data.forces.forEach(force => {
+                        var option = document.createElement('option');
+                        option.value = force[0];
+                        option.textContent = force[1];
+                        forceDropdown.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 
     function fetchForceOptions(role, index) {
         var forceDropdown = document.getElementById(`${role}-force-${index}`);
         var csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
-        // Fetch force options
         fetch('/get_force_options', {
             method: 'POST',
             body: new URLSearchParams({
@@ -211,12 +242,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         forceDropdown.appendChild(option);
                     });
                 } else {
-                    console.error('No forces data found');
+                    console.error('Invalid forces data:', data);
                 }
             })
             .catch(error => console.error('Error:', error));
-
-
     }
 
     // Function to add input event listener to the strength field for validation
@@ -243,41 +272,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateStrengthWithRitual(role, index) {
-        var selectedRitualId = document.getElementById(role + '-ritual-' + index).value;
+        var selectedRitual = document.getElementById(role + '-ritual-' + index).value;
         var strengthField = document.getElementById(role + '-strength-' + index);
-        var maxStrength = parseInt(strengthField.getAttribute('data-max-strength'));
-        var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+        var baseStrength = parseInt(strengthField.getAttribute('data-max-strength'));
 
-        if (selectedRitualId === '') {
-            strengthField.value = maxStrength;
-            return;
+        if (selectedRitual === 'ritual1') {
+            strengthField.value = baseStrength + 500; // Example adjustment
+        } else if (selectedRitual === 'ritual2') {
+            strengthField.value = baseStrength + 1000; // Example adjustment
+        } else {
+            strengthField.value = baseStrength;
         }
-
-        // Fetch ritual effect
-        fetch('/get_force_ritual_effect', {
-            method: 'POST',
-            body: new URLSearchParams({
-                'ritual_id': selectedRitualId,
-                'csrf_token': csrfToken
-            }),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                var ritualQuality = data.force_ritual_quality_id;
-                if (ritualQuality !== 0) {
-                    // Update orders based on the ritual quality
-                    var selectedForceId = document.getElementById(role + '-force-' + index).value;
-                    fetchOrdersByForce(selectedForceId, role, index, csrfToken, ritualQuality)
-                        .catch(error => console.error('Error:', error));
-                }
-
-
-
-            })
-            .catch(error => console.error('Error:', error));
     }
-
 });
