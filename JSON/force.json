@@ -225,7 +225,7 @@
     },
     {
         "force_id": 28,
-        "force_name": "Jotun Army",
+        "force_name": "Jotun Army 1",
         "force_is_army": true,
         "nation_id": 13,
         "quality_id": 0,
@@ -233,55 +233,311 @@
     },
     {
         "force_id": 29,
-        "force_name": "Large Jotun Army",
+        "force_name": "Jotun Army 2",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 30,
+        "force_name": "Jotun Army 3",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 31,
+        "force_name": "Jotun Army 4",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 32,
+        "force_name": "Jotun Army 5",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 33,
+        "force_name": "Large Jotun Army 1",
         "force_is_army": true,
         "nation_id": 13,
         "quality_id": 0,
         "large": true
     },
     {
-        "force_id": 30,
-        "force_name": "Drujj Army",
-        "force_is_army": true,
-        "nation_id": 11,
-        "quality_id": 0,
-        "large": false
-    },
-    {
-        "force_id": 31,
-        "force_name": "Large Drujj Army",
-        "force_is_army": true,
-        "nation_id": 11,
-        "quality_id": 0,
-        "large": true
-    },
-    {
-        "force_id": 32,
-        "force_name": "Grendel Army",
-        "force_is_army": true,
-        "nation_id": 12,
-        "quality_id": 0,
-        "large": false
-    },
-    {
-        "force_id": 33,
-        "force_name": "Large Grendel Army",
-        "force_is_army": true,
-        "nation_id": 12,
-        "quality_id": 0,
-        "large": true
-    },
-    {
         "force_id": 34,
-        "force_name": "Grendel Fleet",
+        "force_name": "Large Jotun Army 2",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 35,
+        "force_name": "Large Jotun Army 3",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 36,
+        "force_name": "Large Jotun Army 4",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 37,
+        "force_name": "Large Jotun Army 5",
+        "force_is_army": true,
+        "nation_id": 13,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 38,
+        "force_name": "Drujj Army 1",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 39,
+        "force_name": "Drujj Army 2",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 40,
+        "force_name": "Drujj Army 3",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 41,
+        "force_name": "Drujj Army 4",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 42,
+        "force_name": "Drujj Army 5",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 43,
+        "force_name": "Large Drujj Army 1",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 44,
+        "force_name": "Large Drujj Army 2",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 45,
+        "force_name": "Large Drujj Army 3",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 46,
+        "force_name": "Large Drujj Army 4",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 47,
+        "force_name": "Large Drujj Army 5",
+        "force_is_army": true,
+        "nation_id": 11,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 48,
+        "force_name": "Grendel Army 1",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 49,
+        "force_name": "Grendel Army 2",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 50,
+        "force_name": "Grendel Army 3",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 51,
+        "force_name": "Grendel Army 4",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 52,
+        "force_name": "Grendel Army 5",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 53,
+        "force_name": "Large Grendel Army 1",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 54,
+        "force_name": "Large Grendel Army 2",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 55,
+        "force_name": "Large Grendel Army 3",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 56,
+        "force_name": "Large Grendel Army 4",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 57,
+        "force_name": "Large Grendel Army 5",
+        "force_is_army": true,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 58,
+        "force_name": "Grendel Fleet 1",
         "force_is_army": false,
         "nation_id": 12,
         "quality_id": 0,
         "large": false
     },
     {
-        "force_id": 35,
-        "force_name": "Large Grendel Fleet",
+        "force_id": 59,
+        "force_name": "Grendel Fleet 2",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 60,
+        "force_name": "Grendel Fleet 3",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 61,
+        "force_name": "Grendel Fleet 4",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 62,
+        "force_name": "Grendel Fleet 5",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": false
+    },
+    {
+        "force_id": 63,
+        "force_name": "Large Grendel Fleet 1",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 64,
+        "force_name": "Large Grendel Fleet 2",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 65,
+        "force_name": "Large Grendel Fleet 3",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 66,
+        "force_name": "Large Grendel Fleet 4",
+        "force_is_army": false,
+        "nation_id": 12,
+        "quality_id": 0,
+        "large": true
+    },
+    {
+        "force_id": 67,
+        "force_name": "Large Grendel Fleet 5",
         "force_is_army": false,
         "nation_id": 12,
         "quality_id": 0,

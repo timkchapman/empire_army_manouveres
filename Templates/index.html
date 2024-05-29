@@ -31,6 +31,13 @@
     </form>
 
     <h2>Barbarian</h2>
+    <label for="barbarian-force-selector">Select Barbarian Force:</label>
+    <select id="barbarian-force-selector" class="form-control">
+        <option value="">Select Force</option>
+        <option value="Drujj">Drujj</option>
+        <option value="Grendel">Grendel</option>
+        <option value="Jotun">Jotun</option>
+    </select>
     <form id="barbarian-form" method="POST">
         {{ barbarian_form.hidden_tag() }}
         <table class="table table-bordered">
@@ -90,7 +97,7 @@
             <tr class="table-info">
                 <th>Force</th>
                 <th>Casualties Taken</th>
-                <th>New Strength</th>
+                <th>Remaining Strength</th>
             </tr>
         </thead>
         <tbody id="summary-forces-details">
@@ -102,6 +109,12 @@
         </tbody>
     </table>
 </div>
+
+<style>
+    #barbarian-force-selector {
+        width: 200px
+    }
+</style>
 
 <script src="{{ url_for('static', filename='js/delete_row.js') }}"></script>
 <script src="{{ url_for('static', filename='js/force_details.js') }}"></script>
