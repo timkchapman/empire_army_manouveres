@@ -112,7 +112,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         besieged: besiegedValue,
                         ritual: ritualValue
                     };
-                    fortifications.push(fortification);
+                    if (fortification.fortification.trim() !== '') {
+                        forces.push(fortification);
+                    }
                 } else {
                     console.log('Fortification element not found for row:', row);
                 }
