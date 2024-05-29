@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify, render_template, Response
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 from forms.forces import ForcesForm
-from forms.fortifications import FortificationsForm
+from forms.military_units import MilitaryUnitsForm
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -141,8 +141,10 @@ def index():
     barbarian_form.ritual.choices = rituals
     imperial_form.strength.data = strength
     barbarian_form.strength.data = strength
+    imperial_military_units_form = MilitaryUnitsForm
+    barbarian_military_units_form = MilitaryUnitsForm
 
-    return render_template('index.html', imperial_form=imperial_form, barbarian_form=barbarian_form)
+    return render_template('index.html', imperial_form=imperial_form, barbarian_form=barbarian_form, imperial_military_units_form=imperial_military_units_form, barbarian_military_units_form=barbarian_military_units_form)
 
 
 @app.route('/get_force_options', methods=['POST'])
@@ -360,7 +362,6 @@ def calculate_outcome():
             'remaining_strength': barbarian_fort_data['strength']
         }
 
-    print('imperial contribution: ', total_imperial_victory_contribution, ', Barbarian Contribution: ', total_barbarian_victory_contribution)
     total_victory_points, offensive_victory_points, defensive_victory_points, outcome = calculate_victory_points(
         total_imperial_victory_contribution, imperial_offensive_victory_contribution, imperial_defensive_victory_contribution,
         total_barbarian_victory_contribution, barbarian_offensive_victory_contribution, barbarian_defensive_victory_contribution,
@@ -369,18 +370,18 @@ def calculate_outcome():
     
     # Distribute casualties and calculate remaining strengths for forces
     imperial_force_casualties_taken, imperial_force_remaining_strength = distribute_force_casualties(
-        total_barbarian_casualties_inflicted, imperial_forces, outcome, defensive_victory_points, imperial_forces, barbarian_forces
+        total_barbarian_casualties_inflicted, imperial_forces, outcome, defensive_victory_points, all_imperial_forces, all_barbarian_forces, is_barbarian = False
     )
     barbarian_force_casualties_taken, barbarian_force_remaining_strength = distribute_force_casualties(
-        total_imperial_casualties_inflicted, barbarian_forces, outcome, defensive_victory_points, imperial_forces, barbarian_forces
+        total_imperial_casualties_inflicted, barbarian_forces, outcome, defensive_victory_points, all_imperial_forces, all_barbarian_forces, is_barbarian = True
     )
 
     # Distribute casualties and calculate remaining strengths for fortifications
     imperial_fort_casualties_taken, imperial_fort_remaining_strength = distribute_fortification_casualties(
-        total_barbarian_casualties_inflicted, imperial_fortifications, outcome, defensive_victory_points, imperial_forces, barbarian_forces, is_barbarian=False
+        total_barbarian_casualties_inflicted, imperial_fortifications, outcome, defensive_victory_points, all_imperial_forces, all_barbarian_forces, is_barbarian=False
     )
     barbarian_fort_casualties_taken, barbarian_fort_remaining_strength = distribute_fortification_casualties(
-        total_imperial_casualties_inflicted, barbarian_fortifications, outcome, defensive_victory_points, imperial_forces, barbarian_forces, is_barbarian = True
+        total_imperial_casualties_inflicted, barbarian_fortifications, outcome, defensive_victory_points, all_imperial_forces, all_barbarian_forces, is_barbarian = True
     )
 
     # Update forces_data with casualties and remaining strengths for imperial forces and fortifications
@@ -576,22 +577,33 @@ def calculate_victory_points(total_imperial_victory_contribution, imperial_offen
 
     return total_victory_points, offensive_victory_points, defensive_victory_points, outcome
 
-def distribute_force_casualties(total_casualties_inflicted, forces, outcome, defensive_victory_points, imperial_forces, barbarian_forces):
+def distribute_force_casualties(total_casualties_inflicted, forces, outcome, defensive_victory_points, all_imperial_forces, all_barbarian_forces, is_barbarian):
     casualties_taken = {}
     remaining_strength = {}
+    exceptions = []
     force_break = 1000
     large_force_break = 1250
 
     # Filter forces based on conditions
     filtered_forces = [force for force in forces if 'force' in force and force.get('order') != "42"]
+    # Filter forces based on conditions
+    if is_barbarian:
+        total_forces = all_barbarian_forces
+        exempt_fortifications = [force for force in all_barbarian_forces if 'fortification' in force and not force.get('besieged')]
+    else:
+        total_forces = all_imperial_forces
+        exempt_fortifications = [force for force in all_imperial_forces if 'fortification' in force and not force.get('besieged')]
+
+    exempt_forces = [force for force in forces if 'force' in force and force.get('order') == "42"]
+    exceptions = exempt_fortifications + exempt_forces
 
     # Check for global effects from barbarian and imperial orders
-    if any(force in barbarian_forces for force in forces):
-        for force in imperial_forces:
+    if any(force in all_barbarian_forces for force in forces):
+        for force in all_imperial_forces:
             order_id = force.get('order')
             if order_id:
                 order = Order.query.get(order_id)
-                if order.order_name == "Cruel":
+                if order.order_name == "Merciless Onslaught":
                     force_break = 1500
                     large_force_break = 2250
 
@@ -621,10 +633,10 @@ def distribute_force_casualties(total_casualties_inflicted, forces, outcome, def
                     additional_casualty_reduction_modifier = -0.1
         modifier += additional_casualty_reduction_modifier
 
-        if (outcome == 'Imperial Victory' and force in imperial_forces) or (outcome == 'Barbarian Victory' and force in barbarian_forces):
+        if (outcome == 'Imperial Victory' and force in all_imperial_forces) or (outcome == 'Barbarian Victory' and force in all_barbarian_forces):
             modifier -= (defensive_victory_points / 100)
 
-        modified_casualties = int(total_casualties_inflicted / len(filtered_forces) * modifier)
+        modified_casualties = int(total_casualties_inflicted / (len(total_forces) - len(exceptions)) * modifier)
         if order_id and order.order_name == 'Lay Low':
             modified_casualties = 0
 
@@ -648,6 +660,14 @@ def distribute_fortification_casualties(total_casualties_inflicted, forces, outc
 
     # Filter forces based on conditions
     filtered_fortifications = [force for force in forces if 'fortification' in force and force.get('besieged')]
+    if is_barbarian:
+        total_forces = barbarian_forces
+        exempt_forces = [force for force in total_forces if 'force' in force and force.get('order') == "42"]
+    else:
+        total_forces = imperial_forces
+        exempt_forces = [force for force in total_forces if 'force' in force and force.get('order') == "42"]
+    exempt_fortifications = [force for force in forces if 'fortification' in force and not force.get('besieged')]
+    exceptions = exempt_forces + exempt_fortifications
 
     # Only apply Storm the Walls logic if processing barbarian fortifications
     if is_barbarian:
@@ -671,7 +691,7 @@ def distribute_fortification_casualties(total_casualties_inflicted, forces, outc
         if (outcome == 'Imperial Victory' and force in imperial_forces) or (outcome == 'Barbarian Victory' and force in barbarian_forces):
             modifier -= (defensive_victory_points / 100)
 
-        modified_casualties = int(total_casualties_inflicted / len(filtered_fortifications) * modifier)
+        modified_casualties = int(total_casualties_inflicted / (len(total_forces) - len(exceptions)) * modifier)
 
         casualties_taken[force_id] = modified_casualties
         new_strength = force_strength - casualties_taken[force_id]

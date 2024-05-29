@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
+    function hasDuplicates(array) {
+        const ids = array.map(obj => obj.force); // Change 'force' to 'fortification' if checking fortifications
+        return new Set(ids).size !== array.length;
+    }
+
     // Function to collect forces data
     function collectForces(role) {
         const forces = [];
@@ -54,20 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 const forceId = row.id.split('-').pop();
                 const forceElement = document.getElementById(`${role}-force-${forceId}`);
                 if (forceElement) {
-                    console.log('Force element found:', forceElement);
                     const strengthElement = row.querySelector(`#${role}-strength-${forceId}`);
                     const orderElement = row.querySelector(`#${role}-order-${forceId}`);
                     const ritualElement = row.querySelector(`#${role}-ritual-${forceId}`);
-                    console.log('Strength element found:', strengthElement);
-                    console.log('Order element found:', orderElement);
-                    console.log('Ritual element found:', ritualElement);
                     // Check if elements are found before accessing their value property
                     const strengthValue = strengthElement ? strengthElement.value : '';
                     const orderValue = orderElement ? orderElement.value : '';
                     const ritualValue = ritualElement ? ritualElement.value : '';
-                    console.log('Strength value:', strengthValue);
-                    console.log('Order value:', orderValue);
-                    console.log('Ritual value:', ritualValue);
                     const force = {
                         force: forceElement.value,
                         strength: strengthValue,
@@ -85,11 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(`Table body not found for role '${role}'`);
         }
         console.log('Forces collected:', forces);
+        if (hasDuplicates(forces)) {
+            alert('Please make sure each combatant is unique.');
+            return [];
+        }
         return forces;
     }
 
-
-    // Function to collect fortifications data
     function collectFortifications(role) {
         const fortifications = [];
         const tableBody = document.getElementById(`${role}-forces`);
@@ -99,15 +99,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 const forceId = row.id.split('-').pop();
                 const fortificationElement = document.getElementById(`${role}-fortification-${forceId}`);
                 if (fortificationElement) {
+                    const strengthElement = document.getElementById(`${role}-fortification-strength-${forceId}`);
+                    const besiegedElement = document.getElementById(`${role}-fortification-besieged-${forceId}`);
+                    const ritualElement = document.getElementById(`${role}-fortification-ritual-${forceId}`);
+                    // Check if elements are found before accessing their value property
+                    const strengthValue = strengthElement ? strengthElement.value : '';
+                    const besiegedValue = besiegedElement ? besiegedElement.checked : false;
+                    const ritualValue = ritualElement ? ritualElement.value : '';
                     const fortification = {
                         fortification: fortificationElement.value,
-                        strength: document.getElementById(`${role}-fortification-strength-${forceId}`).value,
-                        besieged: document.getElementById(`${role}-fortification-besieged-${forceId}`).checked,
-                        ritual: document.getElementById(`${role}-fortification-ritual-${forceId}`).value
+                        strength: strengthValue,
+                        besieged: besiegedValue,
+                        ritual: ritualValue
                     };
                     fortifications.push(fortification);
+                } else {
+                    console.log('Fortification element not found for row:', row);
                 }
             });
+        } else {
+            console.log(`Table body not found for role '${role}'`);
+        }
+        console.log('Fortifications collected:', fortifications);
+        if (hasDuplicates(fortifications.map(f => f.fortification))) {
+            alert('Please make sure each combatant is unique.');
+            return [];
         }
         return fortifications;
     }

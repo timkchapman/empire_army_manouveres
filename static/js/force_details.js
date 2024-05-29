@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Prevent enter key from submitting the form
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    });
+
     let imperialCount = 1;
     let barbarianCount = 1;
 
@@ -241,11 +248,25 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error:', error));
     }
 
+    // Function to add input event listener to the strength field for validation
     function addStrengthInputListener(role, index) {
-        document.getElementById(role + '-strength-' + index).addEventListener('input', function () {
-            var maxStrength = this.getAttribute('data-max-strength');
-            if (this.value > maxStrength) {
-                this.value = maxStrength;
+        var strengthField = document.getElementById(role + '-strength-' + index);
+        strengthField.addEventListener('input', function () {
+            validateStrength(role, index);
+        });
+    }
+
+    /// Function to validate the strength input
+    function validateStrength(role, index) {
+        var maxStrength = parseInt(document.getElementById(role + '-strength-' + index).getAttribute('data-max-strength'));
+        var strengthField = document.getElementById(role + '-strength-' + index);
+        var minStrength = maxStrength === 7500 ? 1500 : 1000;
+
+        strengthField.addEventListener('blur', function () {
+            var strengthInput = strengthField.value.trim();
+
+            if (strengthInput === '' || isNaN(strengthInput) || parseInt(strengthInput) < minStrength || parseInt(strengthInput) > maxStrength) {
+                strengthField.value = maxStrength;
             }
         });
     }
