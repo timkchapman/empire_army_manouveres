@@ -9,11 +9,11 @@
     },
     {
         "force_id": 1,
-        "force_name": "Black Cloaks",
+        "force_name": "Black Thorns",
         "force_is_army": true,
         "nation_id": 4,
         "quality_id": 9,
-        "large": false
+        "large": true
     },
     {
         "force_id": 2,
@@ -85,7 +85,7 @@
         "force_is_army": true,
         "nation_id": 9,
         "quality_id": 6,
-        "large": false
+        "large": true
     },
     {
         "force_id": 11,
@@ -93,7 +93,7 @@
         "force_is_army": true,
         "nation_id": 1,
         "quality_id": 24,
-        "large": false
+        "large": true
     },
     {
         "force_id": 12,
@@ -165,7 +165,7 @@
         "force_is_army": true,
         "nation_id": 2,
         "quality_id": 27,
-        "large": false
+        "large": true
     },
     {
         "force_id": 21,
@@ -181,7 +181,7 @@
         "force_is_army": true,
         "nation_id": 3,
         "quality_id": 23,
-        "large": false
+        "large": true
     },
     {
         "force_id": 23,
@@ -213,7 +213,7 @@
         "force_is_army": true,
         "nation_id": 3,
         "quality_id": 12,
-        "large": false
+        "large": true
     },
     {
         "force_id": 27,
