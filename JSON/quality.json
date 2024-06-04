@@ -250,5 +250,12 @@
         "quality_effects": "The army can use the cut them down order.",
         "quality_descriptors": "None.",
         "quality_description": "Granted by the ritual Loosen the Shackles form Urizen lore, the soldiers of the army are filled with an unquenchable hunger to kill as many of their foes as possible. This powerful urge can cause unpredictable additional effects on those fighting alongside the army, especially those with the draughir lineage."
+    },
+    {
+        "quality_id": 36,
+        "quality_name": "Quick-Witted",
+        "quality_effects": "The army can use the seek the foe order when attacking. Can use the guard the gates order when defending.",
+        "quality_descriptors": "Craft, Canny, Tricksy.",
+        "quality_description": "The army draws on the path of the mediator; working to uncover information about barbarians and ranging further afield. The army's mediators often try to encourage dealings with other nations as much as possible; it is much easier for a scout to range ahead of the main force if they can be sure of safe lodgings in foreign territories. Only the Narwhal's Spear army of Wintermark have this quality"
     }
 ]

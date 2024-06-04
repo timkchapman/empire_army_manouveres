@@ -125,6 +125,8 @@ def establish_quality_order_relationships():
                 quality.quality_orders = [orders[37]]
             elif quality.quality_name == 'Watchful':
                 quality.quality_orders = [orders[38], orders[39]]
+            elif quality.quality_name == 'Quick-Witted':
+                quality.quality_orders = [orders[34], orders[50]]
 
         db.session.commit()
         print('Quality-Order relationships established.')

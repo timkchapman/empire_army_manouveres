@@ -542,5 +542,21 @@
         "nation_id": 12,
         "quality_id": 0,
         "large": true
+    },
+    {
+        "force_id": 68,
+        "force_name": "Narwhal's Spear",
+        "force_is_army": true,
+        "nation_id": 10,
+        "quality_id": 36,
+        "large": false
+    },
+    {
+        "force_id": 69,
+        "force_name": "The Autumn Hammers",
+        "force_is_army": true,
+        "nation_id": 3,
+        "quality_id": 0,
+        "large": true
     }
 ]

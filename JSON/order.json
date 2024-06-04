@@ -559,5 +559,16 @@
         "casualties_suffered_modifier": 0.2,
         "territory_claimed_modifier": 0,
         "territory_defence_modifier": 0
+    },
+    {
+        "order_id": 51,
+        "order_name": "Seek the Foe",
+        "offensive_order": true,
+        "order_effects": "The general who commands the army receives a report about forces present in the same territory as the army. Casualties inlicted by this army are reduced by one fifth. This army can move through five territories instead of the usual three when taking this order.",
+        "order_description": "A general who sends their scouts and mediators forward to gather information while engaged in an aggressive campaign receives a report that includes details of the enemy campaign armies in the territory; their allegiance; an estimation of their strength; the name of their general and information about their special qualities. They also receive information about significant local fortifications; and other potentially useful strategic and tactical information about the campaign and the forces involved in it.",
+        "casualties_inflicted_modifier": -0.2,
+        "casualties_suffered_modifier": 0,
+        "territory_claimed_modifier": 0,
+        "territory_defence_modifier": 0
     }
 ]
